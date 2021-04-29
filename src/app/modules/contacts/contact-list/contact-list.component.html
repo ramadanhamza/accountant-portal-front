@@ -1,0 +1,43 @@
+<div class="card">
+  <div class="card-header"></div>
+  <div class="card-body">
+    <table class="table table-striped table-hover" *ngFor="let c of contacts; index as i">
+      <thead>
+      <th colspan="2">Client</th>
+      </thead>
+      <tbody>
+      <tr>
+        <td colspan="2">{{c.client.email}}</td>
+      </tr>
+      </tbody>
+      <thead>
+      <th colspan="2">Sujet</th>
+      </thead>
+      <tbody>
+      <tr>
+        <td colspan="2">{{c.sujet}}</td>
+      </tr>
+      </tbody>
+      <thead>
+      <th colspan="2">Message</th>
+      </thead>
+      <tbody>
+      <tr>
+        <td colspan="2">{{c.message}}</td>
+      </tr>
+      <tr>
+        <td><button type="button" class="btn btn-outline-primary" (click)="toggle()">{{buttonName}}</button></td>
+        <td><button style="border: none; background-color: transparent;" (click)="delete(i)"><i class="fa fa-times"></i></button></td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <ng-container *ngIf="show">
+            <div><textarea rows="15"></textarea></div>
+            <button type="button" class="btn btn-outline-primary" (click)="send($event.target, 'Envoyé')">Envoyer</button>
+          </ng-container>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
