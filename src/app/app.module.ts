@@ -1,3 +1,5 @@
+import { PostCreateComponent } from './modules/post-create/post-create.component';
+import { PostListComponent } from './modules/post-create/post-list/post-list.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -14,10 +16,16 @@ import { ContactListComponent } from './modules/contacts/contact-list/contact-li
 import { ContactsComponent } from './modules/contacts/contacts.component';
 import { AdminComponent } from './layouts/admin/admin.component';
 import {FormsModule} from '@angular/forms';
-import { PostulantsComponent } from './modules/postulants/postulants.component';
-import { PostulantListComponent } from './modules/postulants/postulant-list/postulant-list.component';
+import {MatButtonModule} from '@angular/material/button';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatInputModule} from '@angular/material/input';
+import {MatCardModule} from '@angular/material/card';
 import { PostulationListComponent } from './modules/postulations/postulation-list/postulation-list.component';
 import { PostulationsComponent } from './modules/postulations/postulations.component';
+import { FateModule, FateMaterialModule } from 'fate-editor';
+
+
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -29,10 +37,12 @@ import { PostulationsComponent } from './modules/postulations/postulations.compo
     ContactListComponent,
     ContactsComponent,
     AdminComponent,
-    PostulantsComponent,
-    PostulantListComponent,
     PostulationListComponent,
-    PostulationsComponent
+    PostulationsComponent,
+    PostCreateComponent,
+    PostListComponent
+
+
   ],
   imports: [
     BrowserModule,
@@ -40,7 +50,14 @@ import { PostulationsComponent } from './modules/postulations/postulations.compo
     BrowserAnimationsModule,
     DefaultModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    FateModule,
+    FateMaterialModule,
+    MatFormFieldModule,
+    MatCardModule,
+    MatInputModule,
+    MatDividerModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

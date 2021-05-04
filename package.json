@@ -23,6 +23,7 @@
     "@angular/platform-browser-dynamic": "~11.2.10",
     "@angular/router": "~11.2.10",
     "bootstrap": "^4.6.0",
+    "fate-editor": "^2.3.5",
     "font-awesome": "^4.7.0",
     "highcharts-angular": "^2.10.0",
     "rxjs": "~6.6.0",

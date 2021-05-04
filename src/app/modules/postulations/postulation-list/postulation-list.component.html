@@ -1,1 +1,27 @@
-<p>postulation-list works!</p>
+<div class="card">
+  <div class="card-header"></div>
+  <div class="card-body">
+    <table class="table table-striped table-hover">
+      <thead>
+      <th>Nom</th>
+      <th>Prenom</th>
+      <th>Email</th>
+      <th>Message</th>
+      <th>cv</th>
+      <th>Affirmation</th>
+      </thead>
+      <tbody>S
+      <tr *ngFor="let p of postulations,index as i">
+        <td>{{p.nom}}</td>
+        <td>{{p.prenom}}</td>
+        <td>{{p.email}}</td>
+        <td><a href="#">{{p.messagefilename}}</a></td>
+       <td><a href="#">{{p.cvfilename}}</a></td>
+       <td>{{p.affirmation}}</td>
+       <td><span (click)="accepter(i)"><i class="fa fa-check btn btn-outline-success"></i></span></td>
+       <td><span (click)="refuser(i)"><i class="fa fa-times btn btn-outline-danger"></i></span></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
