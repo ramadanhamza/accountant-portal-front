@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Rdv} from '../model/rdv.model';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {Message} from '../model/message.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,8 @@ export class RdvService {
 
   private urlBase = 'http://localhost:8090';
   private url = '/stock/rdv/';
+
+  private message: Message;
 
   private _rdv: Rdv;
   private _rdvs: Array<Rdv>;
@@ -24,6 +27,21 @@ export class RdvService {
         console.log(error);
       }
     );
+  }
+
+  public save() {
+    if (this.rdv.id == null) {
+      this.http.post(this.urlBase + this.url + '/', this.rdv).subscribe(
+        data => {
+          if (data > 0) {
+            this.rdvs.push(this.rdv);
+          }
+          else {
+            alert('Erreur lors de la création du contact' + data);
+          }
+        }
+      );
+    }
   }
 
   public delete(i) {

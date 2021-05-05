@@ -25,6 +25,21 @@ export class ContactService {
     );
   }
 
+  public save() {
+    if (this.contact.id == null) {
+      this.http.post(this.urlBase + this.url + '/', this.contact).subscribe(
+        data => {
+          if (data > 0) {
+            this.contacts.push(this.contact);
+          }
+          else {
+            alert('Erreur lors de la création du contact' + data);
+          }
+        }
+      );
+    }
+  }
+
   public delete(i) {
     const cCode = this.contacts[i].code;
     this.http.delete(this.urlBase + this.url + 'code/' + cCode + '/').subscribe(

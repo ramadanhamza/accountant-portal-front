@@ -1,5 +1,34 @@
-@import "~bootstrap/dist/css/bootstrap.min.css";
-@import "~font-awesome/css/font-awesome.min.css";
+@import "~bootstrap/scss/bootstrap.scss";
+
+/* You can add global styles to this file, and also import other style files */
+@import "../../accountant-portal/src/variables";
+
+// Import Bootstrap
+
+
+// Global CSS
+@import "../../accountant-portal/src/global";
+
+// Components
+@import "../../accountant-portal/src/components/icons";
+
+// // Sections
+@import "../../accountant-portal/src/sections/masthead";
+@import "../../accountant-portal/src/sections/navbar";
+@import "../../accountant-portal/src/sections/showcase";
+@import "../../accountant-portal/src/sections/testimonials";
+@import "../../accountant-portal/src/sections/call-to-action";
+@import "../../accountant-portal/src/sections/footer";
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import '~font-awesome/css/font-awesome.min.css';
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';

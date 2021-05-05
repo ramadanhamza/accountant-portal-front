@@ -33,9 +33,8 @@ export class RdvListComponent implements OnInit {
     this.rdvService.delete(i);
   }
 
-  send(element, text) {
+  /*send(element, text) {
     element.textContent = text;
     element.disabled = true;
-  }
-
+  }*/
 }
