@@ -14,8 +14,6 @@ import { ContactListComponent } from './modules/contacts/contact-list/contact-li
 import { ContactsComponent } from './modules/contacts/contacts.component';
 import { AdminComponent } from './layouts/admin/admin.component';
 import {FormsModule} from '@angular/forms';
-import { PostulantsComponent } from './modules/postulants/postulants.component';
-import { PostulantListComponent } from './modules/postulants/postulant-list/postulant-list.component';
 import { PostulationListComponent } from './modules/postulations/postulation-list/postulation-list.component';
 import { PostulationsComponent } from './modules/postulations/postulations.component';
 import { FooterComponent } from './footer/footer.component';
@@ -46,8 +44,6 @@ registerLocaleData(localeFr, 'fr');
     ContactListComponent,
     ContactsComponent,
     AdminComponent,
-    PostulantsComponent,
-    PostulantListComponent,
     PostulationListComponent,
     PostulationsComponent,
     FooterComponent,
