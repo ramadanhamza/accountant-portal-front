@@ -1,0 +1,50 @@
+<!-- <div class="card">
+	<div class="card-header"></div>
+	<div class="card-body">
+		<div class="form-group">
+       <label for="">
+				<textarea name="*" id="" cols="500" rows="5" type="text-box" class="form-control"
+					placeholder="Write your Status here" [(ngModel)]="post.content"
+					[ngModelOptions]="{standalone: true}"> </textarea>
+			</label> -->
+  <!--
+        <mat-form-field class="col-5 mt-3 mx-auto"   >
+          <fate-material  	placeholder="Write your post here" [(ngModel)]="post.content" [ngModelOptions]="{standalone: true}"
+        ></fate-material>
+
+        </mat-form-field> -->
+<!--
+		</div> -->
+
+
+	<!-- </div>
+	<div class="card-footer"><button class="btn btn-block btn-outline-primary" (click)="save()">save</button></div>
+</div> -->
+<!-- <form  (submit)="save()">
+
+<mat-form-field class="col-5 mt-3 mx-auto">
+  <fate-material  	placeholder="Write your post here" [(ngModel)]="post.content" [ngModelOptions]="{standalone: true}"
+  ></fate-material>
+</mat-form-field>
+<form> -->
+
+
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>Créer un post</mat-card-title>
+
+    </mat-card-header>
+
+    <mat-card-content>
+        <mat-form-field class="col-12 mt-3 mx-auto" >
+          <fate-material  matInput	placeholder="Write your post here" [(ngModel)]="post.content" [ngModelOptions]="{standalone: true}"
+          ></fate-material>
+        </mat-form-field>
+        <mat-divider></mat-divider>
+    </mat-card-content>
+
+    <mat-card-actions>
+     <div class="d-flex justify-content-center">      <button mat-raised-button (click)="save()" > save</button>
+    </div>
+    </mat-card-actions>
+  </mat-card>
