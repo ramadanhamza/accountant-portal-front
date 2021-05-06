@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {PostulationService} from '../../../controller/service/postulation.service';
-import {Rdv} from '../../../controller/model/rdv.model';
 import {Postulation} from '../../../controller/model/postulation.model';
 
 @Component({

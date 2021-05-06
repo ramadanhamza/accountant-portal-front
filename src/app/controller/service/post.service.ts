@@ -37,10 +37,6 @@ private  url = '/stock/post';
     this._timeline = value;
   }
 
-
-
-
-
 public save() {
 if (this.post.code == null){
 
@@ -87,7 +83,7 @@ this.post = null;
 
 clone(post: Post): Post {
    const myClone = new Post();
-
+   myClone.titre = post.titre;
    myClone.content = post.content;
 
 

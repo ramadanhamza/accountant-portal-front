@@ -1,6 +1,7 @@
 import {LOCALE_ID, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import {EditorModule} from 'primeng/editor';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -30,6 +31,14 @@ import { RdvCreateComponent } from './modules/rdvs/rdv-create/rdv-create.compone
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PostulationCreateComponent } from './modules/postulations/postulation-create/postulation-create.component';
+import { PostCreateComponent } from './modules/post-create/post-create.component';
+import { PostListComponent } from './modules/post-create/post-list/post-list.component';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatCardModule} from '@angular/material/card';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { PostListClientComponent } from './modules/post-create/post-list-client/post-list-client.component';
+import { PostListHomeComponent } from './modules/post-create/post-list-home/post-list-home.component';
 
 // the second parameter 'fr' is optional
 registerLocaleData(localeFr, 'fr');
@@ -55,7 +64,12 @@ registerLocaleData(localeFr, 'fr');
     PostsComponent,
     SponsorshipsComponent,
     ContactCreateComponent,
-    RdvCreateComponent
+    RdvCreateComponent,
+    PostulationCreateComponent,
+    PostCreateComponent,
+    PostListComponent,
+    PostListClientComponent,
+    PostListHomeComponent
   ],
     imports: [
       BrowserModule,
@@ -66,6 +80,10 @@ registerLocaleData(localeFr, 'fr');
       FormsModule,
       AgmCoreModule,
       BrowserModule,
+      MatCardModule,
+      MatDividerModule,
+      MatFormFieldModule,
+      EditorModule,
       AgmCoreModule.forRoot({
         apiKey: 'AIzaSyC4iUno5RgmQkuIOC0jP1DSLNIi_O4gX7Y'
       }),

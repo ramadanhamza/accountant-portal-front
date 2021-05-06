@@ -36,13 +36,16 @@
     </mat-card-header>
 
     <mat-card-content>
-        <mat-form-field class="col-12 mt-3 mx-auto" >
-          <fate-material  matInput	placeholder="Write your post here" [(ngModel)]="post.content" [ngModelOptions]="{standalone: true}"
-          ></fate-material>
-        </mat-form-field>
+
+
         <mat-divider></mat-divider>
     </mat-card-content>
-
+    <div class="row">
+      <div class="col-md-12 form-group">
+        <input type="text" class="form-control" name="titre" id="titre" placeholder="Titre de l'article" [(ngModel)]="post.titre">
+      </div>
+    </div>
+      <p-editor [(ngModel)]="post.content" [style]="{'height':'320px'}"></p-editor>
     <mat-card-actions>
      <div class="d-flex justify-content-center">      <button mat-raised-button (click)="save()" > save</button>
     </div>
