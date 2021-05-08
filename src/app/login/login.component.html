@@ -1,0 +1,16 @@
+<div class="card">
+  <div class="card-header">Authentification</div>
+  <div class="card-body">
+    <div class="form-group">
+      <label>Nom de compte</label>
+      <input type="text" class="form-control" [(ngModel)]="username">
+    </div>
+    <div class="form-group">
+      <label>Mot de passe</label>
+      <input type="password" class="form-control" [(ngModel)]="password">
+    </div>
+  </div>
+  <div class="card-footer">
+    <button class="btn btn-block btn-outline-primary" (click)=checkLogin()>Se connecter</button>
+  </div>
+</div>

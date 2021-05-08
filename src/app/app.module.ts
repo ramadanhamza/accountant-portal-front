@@ -13,12 +13,10 @@ import { RdvsComponent } from './modules/rdvs/rdvs.component';
 import { RdvListComponent } from './modules/rdvs/rdv-list/rdv-list.component';
 import { ContactListComponent } from './modules/contacts/contact-list/contact-list.component';
 import { ContactsComponent } from './modules/contacts/contacts.component';
-import { AdminComponent } from './layouts/admin/admin.component';
 import {FormsModule} from '@angular/forms';
 import { PostulationListComponent } from './modules/postulations/postulation-list/postulation-list.component';
 import { PostulationsComponent } from './modules/postulations/postulations.component';
 import { FooterComponent } from './footer/footer.component';
-import { GridComponent } from './grid/grid.component';
 import { MainComponent } from './main/main.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MastheadComponent } from './masthead/masthead.component';
@@ -39,6 +37,9 @@ import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { PostListClientComponent } from './modules/post-create/post-list-client/post-list-client.component';
 import { PostListHomeComponent } from './modules/post-create/post-list-home/post-list-home.component';
+import {LoginComponent} from './login/login.component';
+import {LogoutComponent} from './logout/logout.component';
+import {HeaderComponent} from './shared/components/header/header.component';
 
 // the second parameter 'fr' is optional
 registerLocaleData(localeFr, 'fr');
@@ -52,11 +53,9 @@ registerLocaleData(localeFr, 'fr');
     RdvListComponent,
     ContactListComponent,
     ContactsComponent,
-    AdminComponent,
     PostulationListComponent,
     PostulationsComponent,
     FooterComponent,
-    GridComponent,
     MainComponent,
     NavbarComponent,
     MastheadComponent,
@@ -69,7 +68,9 @@ registerLocaleData(localeFr, 'fr');
     PostCreateComponent,
     PostListComponent,
     PostListClientComponent,
-    PostListHomeComponent
+    PostListHomeComponent,
+    LoginComponent,
+    LogoutComponent
   ],
     imports: [
       BrowserModule,
