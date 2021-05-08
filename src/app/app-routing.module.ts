@@ -9,12 +9,12 @@ import {RdvCreateComponent} from './modules/rdvs/rdv-create/rdv-create.component
 import {RdvListComponent} from './modules/rdvs/rdv-list/rdv-list.component';
 import { PostulationListComponent } from './modules/postulations/postulation-list/postulation-list.component';
 import { PostulationCreateComponent } from './modules/postulations/postulation-create/postulation-create.component';
-import { PostCreateComponent } from './modules/post-create/post-create.component';
-import { PostListComponent } from './modules/post-create/post-list/post-list.component';
-import {PostListClientComponent} from './modules/post-create/post-list-client/post-list-client.component';
 import {AuthGuardService} from './controller/service/auth-guard.service';
 import {LoginComponent} from './login/login.component';
 import {LogoutComponent} from './logout/logout.component';
+import {PostListComponent} from './modules/posts/post-list/post-list.component';
+import {PostCreateComponent} from './modules/posts/post-create/post-create.component';
+import {PostListClientComponent} from './modules/posts/post-list-client/post-list-client.component';
 
 const routes: Routes = [{
   path: 'admin',

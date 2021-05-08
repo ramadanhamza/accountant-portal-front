@@ -30,16 +30,15 @@ import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PostulationCreateComponent } from './modules/postulations/postulation-create/postulation-create.component';
-import { PostCreateComponent } from './modules/post-create/post-create.component';
-import { PostListComponent } from './modules/post-create/post-list/post-list.component';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import { PostListClientComponent } from './modules/post-create/post-list-client/post-list-client.component';
-import { PostListHomeComponent } from './modules/post-create/post-list-home/post-list-home.component';
 import {LoginComponent} from './login/login.component';
 import {LogoutComponent} from './logout/logout.component';
-import {HeaderComponent} from './shared/components/header/header.component';
+import {PostCreateComponent} from './modules/posts/post-create/post-create.component';
+import {PostListComponent} from './modules/posts/post-list/post-list.component';
+import {PostListClientComponent} from './modules/posts/post-list-client/post-list-client.component';
+import {PostListHomeComponent} from './modules/posts/post-list-home/post-list-home.component';
 
 // the second parameter 'fr' is optional
 registerLocaleData(localeFr, 'fr');
