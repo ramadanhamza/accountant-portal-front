@@ -9,7 +9,7 @@
       <td><label for="">Post code :{{c.code}}</label> </td>
       <td><span (click)="delete(i,c)"><i class="fa fa-trash btn btn-danger"></i></span> delete</td>
 
-      <td><span (click)="edit(i,c)" routerLink="/admin/dashboard/postCreate"><i class="fa fa-edit btn btn-warning"></i> edit </span>
+      <td><span (click)="edit(i,c)"  (click)="openDialog()"><i class="fa fa-edit btn btn-warning"></i> edit </span>
       </td>
       </thead>
       <tbody>
@@ -21,6 +21,9 @@
       </tr>
       <tr>
         <td colspan="3">{{c.titre}}</td>
+      </tr>
+      <tr>
+        <td colspan="3"><img src="file://{{c.image}}" alt="no Image"></td>
       </tr>
       </tbody>
       <tfoot>

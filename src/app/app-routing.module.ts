@@ -13,6 +13,7 @@ import { PostulationCreateComponent } from './modules/postulations/postulation-c
 import { PostCreateComponent } from './modules/post-create/post-create.component';
 import { PostListComponent } from './modules/post-create/post-list/post-list.component';
 import {PostListClientComponent} from './modules/post-create/post-list-client/post-list-client.component';
+import { SimpleMessageComponent } from './modules/simple-message/simple-message.component';
 
 const routes: Routes = [{
   path: 'admin',
@@ -38,7 +39,9 @@ const routes: Routes = [{
     }, {
       path: 'postList',
       component: PostListComponent
-    }]
+    },
+    {path: 'simpleMail',
+    component:SimpleMessageComponent}]
   }]
 }, {
   path: '',
@@ -55,7 +58,8 @@ const routes: Routes = [{
 }, {
   path: 'postListClient',
   component: PostListClientComponent
-}];
+}
+,];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

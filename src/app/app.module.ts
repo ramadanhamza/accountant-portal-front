@@ -39,6 +39,10 @@ import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { PostListClientComponent } from './modules/post-create/post-list-client/post-list-client.component';
 import { PostListHomeComponent } from './modules/post-create/post-list-home/post-list-home.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatInputModule} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
+import { SimpleMessageComponent } from './modules/simple-message/simple-message.component';
 
 // the second parameter 'fr' is optional
 registerLocaleData(localeFr, 'fr');
@@ -69,7 +73,9 @@ registerLocaleData(localeFr, 'fr');
     PostCreateComponent,
     PostListComponent,
     PostListClientComponent,
-    PostListHomeComponent
+    PostListHomeComponent,
+    SimpleMessageComponent,
+
   ],
     imports: [
       BrowserModule,
@@ -87,7 +93,13 @@ registerLocaleData(localeFr, 'fr');
       AgmCoreModule.forRoot({
         apiKey: 'AIzaSyC4iUno5RgmQkuIOC0jP1DSLNIi_O4gX7Y'
       }),
-      NgbModule
+      NgbModule,
+      MatButtonModule,
+      MatDialogModule,
+      MatInputModule,
+      MatDividerModule,
+      MatButtonModule,
+
     ],
   providers: [{provide: LOCALE_ID, useValue: 'fr' }],
   bootstrap: [AppComponent]

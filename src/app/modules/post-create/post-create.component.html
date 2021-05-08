@@ -44,6 +44,10 @@
       <div class="col-md-12 form-group">
         <input type="text" class="form-control" name="titre" id="titre" placeholder="Titre de l'article" [(ngModel)]="post.titre">
       </div>
+      <div class="col-md-12 form-group">
+        <input type="file" class="form-control" name="cv-file" id="cv-file" (change)="onCileChange($event)">
+        <label for="cv-file">image optionelle</label>
+      </div>
     </div>
       <p-editor [(ngModel)]="post.content" [style]="{'height':'320px'}"></p-editor>
     <mat-card-actions>
@@ -51,3 +55,8 @@
     </div>
     </mat-card-actions>
   </mat-card>
+
+
+
+
+

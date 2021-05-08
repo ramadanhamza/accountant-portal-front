@@ -1,3 +1,4 @@
+import { Newsletter } from './../model/newsletter.model';
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Post } from "../model/post.model";
@@ -6,14 +7,21 @@ import { Post } from "../model/post.model";
   providedIn: 'root'
 })
 export class PostService {
-// postItem: PostItem;i
 
 
  private _post: Post;
+
   private _timeline: Array<Post> ;
   private index: number;
 private  UrlBase = 'http://localhost:8090';
 private  url = '/stock/post';
+private _mail : Newsletter;
+get mail(): Newsletter {
+  return this._mail;
+}
+set mail(value: Newsletter) {
+  this._mail = value;
+}
   get post(): Post {
     if (this._post == null ){this._post = new Post(); }
     return this._post;
@@ -38,12 +46,21 @@ private  url = '/stock/post';
   }
 
 public save() {
+  var formData:FormData = new FormData();
+
+
 if (this.post.code == null){
-
-
 this.timeline.push(this.clone(this.post));
+var image =this.post.image;
 
-this.http.post( this.UrlBase + this.url + '/', this.post).subscribe(
+  formData.append( "image", image);
+
+formData.append( "content", this.post.content );
+formData.append( "titre", this.post.titre );
+
+formData.append( "date", this.post.date );
+
+this.http.post( this.UrlBase + this.url + '/', formData).subscribe(
     data => { if (data > 0)
     {console.log(this.post);
 
@@ -55,7 +72,15 @@ this.http.post( this.UrlBase + this.url + '/', this.post).subscribe(
   this.timeline.push(this.clone(this.post));
   const dcode = this.timeline[this.index].code;
   console.log(dcode);
-  this.http.put(this.UrlBase + this.url + '/code/' + dcode + '/' , this.timeline[this.index]).subscribe(data => {
+  var image =this.timeline[this.index].image;
+
+  formData.append( "image", image);
+
+formData.append( "content", this.timeline[this.index].content );
+formData.append( "titre", this.timeline[this.index].titre );
+
+formData.append( "date", this.timeline[this.index].date );
+  this.http.put(this.UrlBase + this.url + '/code/' + dcode + '/' , formData).subscribe(data => {
       if (data > 0){
 
         this.timeline.splice(this.index, 1);
@@ -70,8 +95,8 @@ this.http.post( this.UrlBase + this.url + '/', this.post).subscribe(
     }
   );
 
+  }
 
-}
 
 this.post = null;
 }
@@ -83,9 +108,10 @@ this.post = null;
 
 clone(post: Post): Post {
    const myClone = new Post();
+   myClone.code = post.code;
    myClone.titre = post.titre;
    myClone.content = post.content;
-
+  myClone.date = post.date;
 
 
    return myClone;
@@ -118,4 +144,19 @@ console.log(error);
      }
    );
   }
+
+  send(){
+    this.http.post( this.UrlBase +  '/stock/newsletter/mail', this.mail).subscribe(
+      data => { if (data > 0)
+      {console.log(this.post);
+
+      }else {alert('erreur lors la creation du mail :' + data); }}
+
+    );
+    this.mail = null;
+
+
+   }
+
+
   }
