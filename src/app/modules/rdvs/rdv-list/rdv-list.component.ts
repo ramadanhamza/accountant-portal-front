@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import {Rdv} from '../../../controller/model/rdv.model';
 import {RdvService} from '../../../controller/service/rdv.service';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { SimpleMessageComponent } from '../../simple-message/simple-message.component';
+
 
 @Component({
   selector: 'app-rdv-list',
@@ -13,8 +16,7 @@ export class RdvListComponent implements OnInit {
     return this.rdvService.rdvs;
   }
 
-  constructor(private rdvService: RdvService) { }
-
+  constructor(private rdvService: RdvService,private dialog: MatDialog) { }
   ngOnInit(): void {
     this.rdvService.findAll();
   }
@@ -37,4 +39,18 @@ export class RdvListComponent implements OnInit {
     element.textContent = text;
     element.disabled = true;
   }*/
+  openDialog(): void {
+    const dialogRef = this.dialog.open(SimpleMessageComponent, {
+      width: '70%',
+      height:'70%',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
+
+
+
 }

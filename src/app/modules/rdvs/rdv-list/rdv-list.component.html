@@ -15,8 +15,8 @@
         <td>{{r.affirmation}}</td>
         <td><span (click)="accepter(i)"><i class="fa fa-check btn btn-outline-success"></i></span></td>
         <td><span (click)="refuser(i)"><i class="fa fa-times btn btn-outline-danger"></i></span></td>
-        <td><button type="button" class="btn btn-outline-primary">Envoyer</button></td>
-        <td><button style="border: none; background-color: transparent;" (click)="delete(i)"><i class="fa fa-times"></i></button></td>
+        <td><button type="button"  (click)="openDialog()" class="btn btn-outline-primary">Envoyer</button></td>
+         <td><button style="border: none; background-color: transparent;" (click)="delete(i)"><i class="fa fa-times"></i></button></td>
       </tr>
       </tbody>
     </table>

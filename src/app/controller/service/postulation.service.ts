@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Postulation} from '../model/postulation.model';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -26,8 +26,26 @@ export class PostulationService {
   }
 
   public save() {
-    if (this.postulation.id == null) {
-      this.http.post(this.urlBase + this.url + '/', this.postulation).subscribe(
+
+
+    if (this.postulation.code == null) {
+      var formData:FormData = new FormData();
+
+     var cv =this.postulation.cvFile;
+     var message =this.postulation.messageFile;
+     formData.append( "cvFile", cv);
+     formData.append( "messageFile", message);
+
+   formData.append( "nom", this.postulation.nom );
+   formData.append( "prenom", this.postulation.prenom );
+
+   formData.append( "email", this.postulation.email );
+
+
+
+
+
+     this.http.post(this.urlBase + this.url + '/', formData).subscribe(
         data => {
           if (data > 0) {
             this.postulations.push(this.postulation);

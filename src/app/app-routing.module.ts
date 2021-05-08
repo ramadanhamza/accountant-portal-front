@@ -15,6 +15,7 @@ import {LogoutComponent} from './logout/logout.component';
 import {PostListComponent} from './modules/posts/post-list/post-list.component';
 import {PostCreateComponent} from './modules/posts/post-create/post-create.component';
 import {PostListClientComponent} from './modules/posts/post-list-client/post-list-client.component';
+import { SimpleMessageComponent } from './modules/simple-message/simple-message.component';
 
 const routes: Routes = [{
   path: 'admin',
@@ -61,7 +62,12 @@ const routes: Routes = [{
   }, {
     path: 'postListClient',
     component: PostListClientComponent
-  }];
+  },
+  {path: 'simpleMail',
+  component:SimpleMessageComponent}
+
+
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

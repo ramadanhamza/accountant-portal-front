@@ -1,6 +1,8 @@
 import { PostService } from 'src/app/controller/service/post.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { Post } from 'src/app/controller/model/post.model';
+import { PostCreateComponent } from '../post-create/post-create.component';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-post-list',
@@ -9,8 +11,7 @@ import { Post } from 'src/app/controller/model/post.model';
 })
 export class PostListComponent implements OnInit {
 
-  constructor(private postservice: PostService) { }
-  // tslint:disable-next-line:typedef
+  constructor(private postservice: PostService,private dialog: MatDialog) { }
   delete(index: number , post: Post) {
     this.postservice.delete(index , post);
     /*
@@ -31,4 +32,22 @@ export class PostListComponent implements OnInit {
   ngOnInit(): void {
     this.postservice.init();
   }
-}
+  openDialog(): void {
+    const dialogRef = this.dialog.open(PostCreateComponent, {
+      width: '70%',
+      height:'70%',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
+
+
+
+
+  }
+
+
+

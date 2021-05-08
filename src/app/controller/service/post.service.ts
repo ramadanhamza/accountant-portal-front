@@ -1,5 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Message } from "../model/message.model";
 import { Post } from "../model/post.model";
 
 @Injectable({
@@ -14,6 +15,13 @@ export class PostService {
   private index: number;
 private  UrlBase = 'http://localhost:8090';
 private  url = '/stock/post';
+private _mail : Message;
+get mail(): Message {
+  return this._mail;
+}
+set mail(value: Message) {
+  this._mail = value;
+}
   get post(): Post {
     if (this._post == null ){this._post = new Post(); }
     return this._post;
@@ -38,10 +46,20 @@ private  url = '/stock/post';
   }
 
 public save() {
+  var formData:FormData = new FormData();
 if (this.post.code == null){
 
 
 this.timeline.push(this.clone(this.post));
+var image =this.post.image;
+
+  formData.append( "image", image);
+
+formData.append( "content", this.post.content );
+formData.append( "titre", this.post.titre );
+
+formData.append( "date", this.post.date );
+
 
 this.http.post( this.UrlBase + this.url + '/', this.post).subscribe(
     data => { if (data > 0)
@@ -55,7 +73,15 @@ this.http.post( this.UrlBase + this.url + '/', this.post).subscribe(
   this.timeline.push(this.clone(this.post));
   const dcode = this.timeline[this.index].code;
   console.log(dcode);
-  this.http.put(this.UrlBase + this.url + '/code/' + dcode + '/' , this.timeline[this.index]).subscribe(data => {
+  var image =this.timeline[this.index].image;
+
+  formData.append( "image", image);
+
+formData.append( "content", this.timeline[this.index].content );
+formData.append( "titre", this.timeline[this.index].titre );
+
+formData.append( "date", this.timeline[this.index].date );
+  this.http.put(this.UrlBase + this.url + '/code/' + dcode + '/' , formData).subscribe(data => {
       if (data > 0){
 
         this.timeline.splice(this.index, 1);
@@ -75,6 +101,7 @@ this.http.post( this.UrlBase + this.url + '/', this.post).subscribe(
 
 this.post = null;
 }
+
   edit(i: number, post: Post) {
     this.index = i;
     this._post = this.clone(post);
@@ -85,6 +112,8 @@ clone(post: Post): Post {
    const myClone = new Post();
    myClone.titre = post.titre;
    myClone.content = post.content;
+   myClone.date = post.date;
+   myClone.code = post.code;
 
 
 
@@ -118,4 +147,18 @@ console.log(error);
      }
    );
   }
+  send(){
+    this.http.post( this.UrlBase +  '/stock/Message/mail', this.mail).subscribe(
+      data => { if (data > 0)
+      {console.log(this.post);
+
+      }else {alert('erreur lors la creation du mail :' + data); }}
+
+    );
+    this.mail = null;
+
+
+   }
+
+
   }

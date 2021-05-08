@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Postulation } from 'src/app/controller/model/postulation.model';
 import { PostulationService } from 'src/app/controller/service/postulation.service';
+import { SimpleMessageComponent } from '../../simple-message/simple-message.component';
 
 @Component({
   selector: 'app-postulation-list',
@@ -15,7 +17,7 @@ export class PostulationListComponent implements OnInit {
     return this.postulationService.postulations;
   }
 
-  constructor(private postulationService: PostulationService,private sanitizer: DomSanitizer) { }
+  constructor(private postulationService: PostulationService,private sanitizer: DomSanitizer,private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.postulationService.findAll();
@@ -38,6 +40,16 @@ export class PostulationListComponent implements OnInit {
   // delete(i) {
   //   this.postulationService.delete(i);
   // }
+  openDialog(): void {
+    const dialogRef = this.dialog.open(SimpleMessageComponent, {
+      width: '70%',
+      height:'70%',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
 
 }
 

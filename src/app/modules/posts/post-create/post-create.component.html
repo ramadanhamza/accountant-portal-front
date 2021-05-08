@@ -1,32 +1,4 @@
-<!-- <div class="card">
-	<div class="card-header"></div>
-	<div class="card-body">
-		<div class="form-group">
-       <label for="">
-				<textarea name="*" id="" cols="500" rows="5" type="text-box" class="form-control"
-					placeholder="Write your Status here" [(ngModel)]="post.content"
-					[ngModelOptions]="{standalone: true}"> </textarea>
-			</label> -->
-  <!--
-        <mat-form-field class="col-5 mt-3 mx-auto"   >
-          <fate-material  	placeholder="Write your post here" [(ngModel)]="post.content" [ngModelOptions]="{standalone: true}"
-        ></fate-material>
 
-        </mat-form-field> -->
-<!--
-		</div> -->
-
-
-	<!-- </div>
-	<div class="card-footer"><button class="btn btn-block btn-outline-primary" (click)="save()">save</button></div>
-</div> -->
-<!-- <form  (submit)="save()">
-
-<mat-form-field class="col-5 mt-3 mx-auto">
-  <fate-material  	placeholder="Write your post here" [(ngModel)]="post.content" [ngModelOptions]="{standalone: true}"
-  ></fate-material>
-</mat-form-field>
-<form> -->
 
 
   <mat-card class="example-card">
@@ -43,6 +15,10 @@
     <div class="row">
       <div class="col-md-12 form-group">
         <input type="text" class="form-control" name="titre" id="titre" placeholder="Titre de l'article" [(ngModel)]="post.titre">
+      </div>
+      <div class="col-md-12 form-group">
+        <input type="file" class="form-control" name="cv-file" id="cv-file" (change)="onCileChange($event)">
+        <label for="cv-file">image optionelle</label>
       </div>
     </div>
       <p-editor [(ngModel)]="post.content" [style]="{'height':'320px'}"></p-editor>

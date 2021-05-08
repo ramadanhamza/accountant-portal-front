@@ -28,20 +28,20 @@
             </div>
             <div class="row">
               <div class="col-md-12 form-group">
-                <input type="file" class="form-control" name="cv-file" id="cv-file" [(ngModel)]="postulation.cvfilename">
-                <label for="cv-file">Votre CV</label>
+                <input type="file" class="form-control" name="cv-file" id="cv-file" (change)="onCileChange($event)">
+                 <label for="cv-file">Votre CV</label>
               </div>
             </div>
             <div class="row">
               <div class="col-md-12 form-group">
-                <input type="file" class="form-control" name="message-file" id="message-file" [(ngModel)]="postulation.messagefilename">
-                <label for="cv-file">Autre fichier</label>
-              </div>
+                <input type="file" class="form-control" name="message-file" id="message-file" (change)="onMileChange($event)">
+                <label for="message-file">Autre fichier</label>
+               </div>
             </div>
             <div class="row">
               <div class="col-12">
-                <input type="submit" value="Envoyer" class="btn btn-outline-dark rounded-0 py-2 px-4" (click)="save()">
-              </div>
+                <input type="submit" value="Envoyer" class="btn btn-outline-dark rounded-0 py-2 px-4 form-control" (click)="save()" >
+                  </div>
             </div>
           </div>
           <div class="col-6">
