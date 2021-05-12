@@ -182,6 +182,8 @@ console.log(error);
         console.log(this.mail.subject);
 
       });
+      this.mail=null;
+
     }
 
    abonner(){

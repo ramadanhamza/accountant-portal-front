@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Postulation } from 'src/app/controller/model/postulation.model';
 import { PostulationService } from 'src/app/controller/service/postulation.service';
 import { SimpleMessageComponent } from '../../simple-message/simple-message.component';
 import {PostService} from '../../../controller/service/post.service';
+import { Message } from 'src/app/controller/model/message.model';
 
 @Component({
   selector: 'app-postulation-list',
@@ -22,15 +23,10 @@ export class PostulationListComponent implements OnInit {
 
   ngOnInit(): void {
     this.postulationService.findAll();
-
-    // const data = this.postulations[1].cv
-    // const blob = new Blob([data], { type: 'application/octet-stream' });
-
-    // this.fileUrl = this.sanitizer.bypassSecurityTrustResourceUrl(window.URL.createObjectURL(blob));
   }
 
   repondre(i:number) {
-    this.postService.send(i);
+    this.postService.send();
 
   }
 
@@ -49,11 +45,11 @@ export class PostulationListComponent implements OnInit {
     this.postulationService.delete(i);
   }
 
-  openDialog(i): void {
-    const dialogRef = this.dialog.open(SimpleMessageComponent, {
+  openDialog(p:Postulation): void {
+    const dialogRef = this.dialog.open(PostulationMessage, {
       width: '70%',
       height: '70%',
-      data: {number : i },
+      data: {postulation:p },
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -67,3 +63,33 @@ export class PostulationListComponent implements OnInit {
 
 }
 
+@Component({
+  selector: 'dialog-overview-example-dialog',
+  templateUrl: './response.html',
+})
+export class PostulationMessage implements OnInit  {
+pstl:Postulation;
+  constructor(
+    public dialogRef: MatDialogRef<PostulationMessage>,
+    @Inject(MAT_DIALOG_DATA) public data: any,private postservice: PostService,private postulationService:PostulationService) { }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+
+  public get mail() : Message {
+    if (this.postservice.mail == null) { this.postservice.mail = new Message(); }
+    return  this.postservice.mail;
+  }
+
+  ngOnInit(): void {
+}
+  send(p : Postulation ){
+
+    this.postservice.send();
+    this.postulationService.changeReponse(p);
+
+    }
+
+  }

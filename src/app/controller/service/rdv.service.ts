@@ -63,13 +63,13 @@ export class RdvService {
     );
   }
 
-  public changeReponse(i) {
-    const cCode = this.rdvs[i].code;
-    this.rdvs[i].reponse = 'Email envoyé';
-    this.http.put(this.urlBase + this.url + 'reponse/code/' + cCode + '/', this.rdvs[i]).subscribe(
+  public changeReponse(r) {
+    const cCode = r.code;
+    r.reponse = 'Email envoyé';
+    this.http.put(this.urlBase + this.url + 'reponse/code/' + cCode + '/', r).subscribe(
       data => {
         if (data > 0) {
-          this.rdvs[i].reponse = 'Email envoyé';
+        r.reponse = 'Email envoyé';
         }
       }, error => {
         console.log(error);

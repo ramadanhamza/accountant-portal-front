@@ -14,7 +14,7 @@ import { RdvListComponent,ResponseMessage } from './modules/rdvs/rdv-list/rdv-li
 import { ContactListComponent } from './modules/contacts/contact-list/contact-list.component';
 import { ContactsComponent } from './modules/contacts/contacts.component';
 import {FormsModule} from '@angular/forms';
-import { PostulationListComponent } from './modules/postulations/postulation-list/postulation-list.component';
+import { PostulationListComponent ,PostulationMessage} from './modules/postulations/postulation-list/postulation-list.component';
 import { PostulationsComponent } from './modules/postulations/postulations.component';
 import { FooterComponent } from './footer/footer.component';
 import { MainComponent } from './main/main.component';
@@ -82,9 +82,9 @@ registerLocaleData(localeFr, 'fr');
     SimpleMessageComponent,
     ResponseMessage,
     NewsletterMessageComponent,
-
     AdminComponent,
-    LogoutComponent
+    LogoutComponent,
+    PostulationMessage
 
   ],
     imports: [

@@ -2,7 +2,6 @@ import {Component, inject, OnInit} from '@angular/core';
 import { Message } from 'src/app/controller/model/message.model';
 import { PostService } from 'src/app/controller/service/post.service';
 import {RdvService} from '../../controller/service/rdv.service';
-import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-simple-message',
@@ -22,9 +21,9 @@ export class SimpleMessageComponent implements OnInit {
     return  this.postservice.mail;
   }
 
-  send(i:number) {
+  send() {
 
-    this.postservice.send(i);
+    this.postservice.send();
 
     }
 

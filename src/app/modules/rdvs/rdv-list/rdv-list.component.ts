@@ -67,17 +67,15 @@ this.clone(rdv);
       console.log('The dialog was closed');
     });
   }
-  rodv:Rdv=new Rdv();
 
-  clone(rdv:Rdv) {import { CloneVisitor } from '@angular/compiler/src/i18n/i18n_ast';
-
+  clone(rdv:Rdv) {
 
     console.log(rdv.affirmation);
 
 
 
     this.mail.to = rdv.client.email;
-this.rodv=rdv;
+
 
 if(rdv.affirmation == "Refusé"){
 
@@ -111,7 +109,7 @@ alert("Veuillez reaffirmez le rendez-vous");
 
 }
 @Component({
-  selector: 'dialog-overview-example-dialog',
+  selector: 'response-message',
   templateUrl: './response.html',
 })
 export class ResponseMessage implements OnInit  {
@@ -132,9 +130,10 @@ rdv:Rdv;
 
   ngOnInit(): void {
 }
-  send(){
+  send(r:Rdv){
 
     this.postservice.send();
+    this.rdvService.changeReponse(r);
 
     }
 

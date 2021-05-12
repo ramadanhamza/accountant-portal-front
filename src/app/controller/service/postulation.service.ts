@@ -112,13 +112,13 @@ export class PostulationService {
     );
   }
 
-  public changeReponse(i) {
-    const cCode = this.postulations[i].code;
-    this.postulations[i].reponse = 'Email envoyé';
-    this.http.put(this.urlBase + this.url + 'reponse/code/' + cCode + '/', this.postulations[i]).subscribe(
+  public changeReponse(p:Postulation) {
+    const cCode = p.code;
+    p.reponse = 'Email envoyé';
+    this.http.put(this.urlBase + this.url + 'reponse/code/' + cCode + '/', p).subscribe(
       data => {
         if (data > 0) {
-          this.postulations[i].reponse = 'Email envoyé';
+          p.reponse = 'Email envoyé';
         }
       }, error => {
         console.log(error);
