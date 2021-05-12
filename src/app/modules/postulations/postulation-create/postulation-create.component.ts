@@ -9,18 +9,13 @@ import {Postulation} from '../../../controller/model/postulation.model';
 })
 export class PostulationCreateComponent implements OnInit {
 
-  public showMsg: boolean = false;
-  public showForm: boolean = true;
-
-  constructor(private postulationService: PostulationService) { }
+  constructor(public postulationService: PostulationService) { }
 
   get postulation(): Postulation {
     return this.postulationService.postulation;
   }
 
   public save() {
-    this.showForm = false;
-    this.showMsg = true;
     return this.postulationService.save();
   }
 

@@ -7,6 +7,9 @@ import {HttpClient} from '@angular/common/http';
 })
 export class ContactService {
 
+  public showMsg: boolean = false;
+  public showForm: boolean = true;
+
   private urlBase = 'http://localhost:8090';
   private url = '/stock/contact/';
 
@@ -31,10 +34,14 @@ export class ContactService {
         data => {
           if (data > 0) {
             this.contacts.push(this.contact);
+            this.showForm = false;
+            this.showMsg = true;
           }
           else {
-            alert('Erreur lors de la création du contact' + data);
+            alert('Une erreur s\'est reproduite, veuillez réessayer');
           }
+        }, error => {
+          console.log(error);
         }
       );
     }

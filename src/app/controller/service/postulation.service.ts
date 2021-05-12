@@ -7,6 +7,9 @@ import {HttpClient} from '@angular/common/http';
 })
 export class PostulationService {
 
+  public showMsg: boolean = false;
+  public showForm: boolean = true;
+
   private urlBase = 'http://localhost:8090';
   private url = '/stock/postulation/';
 
@@ -38,8 +41,6 @@ export class PostulationService {
   }
 
   public save() {
-
-
     if (this.postulation.code == null) {
       var formData:FormData = new FormData();
 
@@ -61,11 +62,15 @@ export class PostulationService {
         data => {
           if (data > 0) {
             this.postulations.push(this.postulation);
+            this.showForm = false;
+            this.showMsg = true;
           }
           else {
-            alert('Erreur lors de la création de la postulation' + data);
+            alert('Une erreur s\'est reproduite, veuillez réessayer');
           }
-        }
+        }, error => {
+          console.log(error);
+       }
       );
     }
   }
@@ -107,6 +112,20 @@ export class PostulationService {
     );
   }
 
+  public changeReponse(i) {
+    const cCode = this.postulations[i].code;
+    this.postulations[i].reponse = 'Email envoyé';
+    this.http.put(this.urlBase + this.url + 'reponse/code/' + cCode + '/', this.postulations[i]).subscribe(
+      data => {
+        if (data > 0) {
+          this.postulations[i].reponse = 'Email envoyé';
+        }
+      }, error => {
+        console.log(error);
+      }
+    );
+  }
+
   public changeAffirmation(i, c) {
     const cCode = this.postulations[i].code;
     if (c == 1) {
@@ -115,7 +134,7 @@ export class PostulationService {
     else if (c == 0) {
       this.postulations[i].affirmation = 'Refusé';
     }
-    this.http.put(this.urlBase + this.url + 'code/' + cCode + '/', this.postulations[i]).subscribe(
+    this.http.put(this.urlBase + this.url + 'affirmation/code/' + cCode + '/', this.postulations[i]).subscribe(
       data => {
         if (data > 0) {
           if (c == 1) {

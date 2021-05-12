@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { Message } from "../model/message.model";
 import { Post } from "../model/post.model";
 import { Subscription } from "../model/subscription.model";
+import {PostulationService} from './postulation.service';
 
 @Injectable({
   providedIn: 'root'
@@ -76,7 +77,10 @@ this.http.post( this.UrlBase + this.url + '/', formData).subscribe(
     data => { if (data > 0)
     {console.log(this.post);
 
-    }else {alert('erreur lors la creation du post :' + data); }}
+    }else {alert('Une erreur s\'est reproduite, veuillez réessayer'); }},
+    error => {
+      console.log(error);
+  }
   );
   this.post = null;
 
@@ -130,7 +134,7 @@ clone(post: Post): Post {
   }
 
 
-  constructor(private  http: HttpClient) { }
+  constructor(private  http: HttpClient, private postulationService: PostulationService) { }
 public init(){
     this.http.get<Array<Post>>(this.UrlBase + this.url + '/').subscribe(data => {
 this.timeline = data;
@@ -168,6 +172,7 @@ console.log(error);
      }
    );
   }
+
   send(){
     console.log(this.mail.text);
       console.log(this.mail.subject);
@@ -176,13 +181,8 @@ console.log(error);
         console.log(this.mail.text);
         console.log(this.mail.subject);
 
-      }
-
-    );
-    this.mail = null;
-
-
-   }
+      });
+    }
 
    abonner(){
 console.log(this.sub.email);

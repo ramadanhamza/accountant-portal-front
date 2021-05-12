@@ -10,42 +10,80 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas debitis, fugit natus?</p>
             <p><img src="../../../../assets/img/join.jpg" alt="Image" class="img-fluid"></p>
           </div>
-          <div class="col-md-6" *ngIf="showForm">
-            <div class="row">
-              <div class="col-md-12 form-group">
-                <input type="text" class="form-control" name="prenom" id="prenom" placeholder="Votre prénom" [(ngModel)]="postulation.prenom">
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12 form-group">
-                <input type="text" class="form-control" name="nom" id="nom" placeholder="Votre nom" [(ngModel)]="postulation.nom">
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12 form-group">
-                <input type="text" class="form-control" name="email" id="email" placeholder="Votre email" [(ngModel)]="postulation.email">
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12 form-group">
-                <input type="file" class="form-control" name="cv-file" id="cv-file" (change)="onCileChange($event)">
-                 <label for="cv-file">Votre CV</label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12 form-group">
-                <input type="file" class="form-control" name="message-file" id="message-file" (change)="onMileChange($event)">
-                <label for="message-file">Autre fichier</label>
-               </div>
-            </div>
-            <div class="row">
-              <div class="col-12">
-                <input type="submit" value="Envoyer" class="btn btn-outline-dark rounded-0 py-2 px-4 form-control" (click)="save()" >
+          <div class="col-md-6" *ngIf="this.postulationService.showForm">
+            <form (ngSubmit)="save()" #myForm="ngForm">
+              <div class="row">
+                <div class="col-md-12 form-group">
+                  <input type="text" class="form-control" name="prenom" id="prenom" required minlength="2" maxlength="30" pattern="[A-Za-z]+" #prenom="ngModel" placeholder="Votre prénom" [(ngModel)]="postulation.prenom">
+                  <div *ngIf="prenom.invalid && (prenom.dirty || prenom.touched)" class="alert alert-danger">
+                    <div *ngIf="prenom.errors.required">
+                      <li>Le prénom est obligatoire.</li>
+                    </div>
+                    <div *ngIf="prenom.errors.minlength">
+                      <li>Le prénom doit contenir au moins 2 caractères.</li>
+                    </div>
+                    <div *ngIf="prenom.errors.maxlength">
+                      <li>Le prénom doit contenir au moins 2 caractères.</li>
+                    </div>
+                    <div *ngIf="prenom.errors.pattern">
+                      <li>Le prénom ne peut pas contenir de chiffres.</li>
+                    </div>
                   </div>
-            </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 form-group">
+                  <input type="text" class="form-control" name="nom" id="nom" required minlength="2" maxlength="30" pattern="[A-Za-z]+" #nom="ngModel" placeholder="Votre nom" [(ngModel)]="postulation.nom">
+                  <div *ngIf="nom.invalid && (nom.dirty || nom.touched)" class="alert alert-danger">
+                    <div *ngIf="nom.errors.required">
+                      <li>Le nom est obligatoire.</li>
+                    </div>
+                    <div *ngIf="nom.errors.minlength">
+                      <li>Le nom doit contenir au moins 2 caractères.</li>
+                    </div>
+                    <div *ngIf="nom.errors.maxlength">
+                      <li>Le nom doit ne doit pas contenir plus de 30 caractères.</li>
+                    </div>
+                    <div *ngIf="nom.errors.pattern">
+                      <li>Le nom ne peut pas contenir de chiffres.</li>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 form-group">
+                  <input type="email" class="form-control" name="email" id="email" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}" #email="ngModel" placeholder="Votre email" [(ngModel)]="postulation.email">
+                  <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+                    <div *ngIf="email.errors.required">
+                      <li>L'email est obligatoire.</li>
+                    </div>
+                    <div *ngIf="email.errors.pattern">
+                      <li>Veuillez entrer une adresse email valide.</li>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 form-group">
+                  <input type="file" class="form-control" name="cv-file" id="cv-file" required (change)="onCileChange($event)">
+                  <label for="cv-file">Votre CV</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12 form-group">
+                  <input type="file" class="form-control" name="message-file" id="message-file" (change)="onMileChange($event)">
+                  <label for="message-file">Autre fichier</label>
+                 </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <input type="submit" value="Envoyer" class="btn btn-outline-dark rounded-0 py-2 px-4" [disabled]="!myForm.form.valid" >
+                </div>
+              </div>
+            </form>
           </div>
           <div class="col-6">
-            <div class="row" *ngIf="showMsg">
+            <div class="row" *ngIf="this.postulationService.showMsg">
               <p style="color: green; font-size: 23px; text-align: center"><i class="fa fa-check"></i> Votre demande a été envoyée avec succès.</p>
             </div>
           </div>

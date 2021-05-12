@@ -9,21 +9,16 @@ import {Contact} from '../../../controller/model/contact.model';
 })
 export class ContactCreateComponent implements OnInit {
 
-  public showMsg: boolean = false;
-  public showForm: boolean = true;
-
   lat = 31.637732055986188;
   lng = -8.003253828843288;
 
-  constructor(private contactService: ContactService) { }
+  constructor(public contactService: ContactService) { }
 
   get contact(): Contact {
     return this.contactService.contact;
   }
 
   public save() {
-    this.showForm = false;
-    this.showMsg = true;
     return this.contactService.save();
   }
 

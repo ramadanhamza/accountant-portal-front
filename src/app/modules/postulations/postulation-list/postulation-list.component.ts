@@ -4,6 +4,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Postulation } from 'src/app/controller/model/postulation.model';
 import { PostulationService } from 'src/app/controller/service/postulation.service';
 import { SimpleMessageComponent } from '../../simple-message/simple-message.component';
+import {PostService} from '../../../controller/service/post.service';
 
 @Component({
   selector: 'app-postulation-list',
@@ -17,7 +18,7 @@ export class PostulationListComponent implements OnInit {
     return this.postulationService.postulations;
   }
 
-  constructor(private postulationService: PostulationService,private sanitizer: DomSanitizer,private dialog: MatDialog) { }
+  constructor(private postulationService: PostulationService,private sanitizer: DomSanitizer,private dialog: MatDialog,private postService:PostService) { }
 
   ngOnInit(): void {
     this.postulationService.findAll();
@@ -27,6 +28,13 @@ export class PostulationListComponent implements OnInit {
 
     // this.fileUrl = this.sanitizer.bypassSecurityTrustResourceUrl(window.URL.createObjectURL(blob));
   }
+
+  repondre(i:number) {
+    this.postService.send(i);
+
+  }
+
+
   accepter(i) {
     const c = 1;
     this.postulationService.changeAffirmation(i, c);
@@ -37,19 +45,25 @@ export class PostulationListComponent implements OnInit {
     this.postulationService.changeAffirmation(i, c);
   }
 
-  // delete(i) {
-  //   this.postulationService.delete(i);
-  // }
-  openDialog(): void {
+  delete(i) {
+    this.postulationService.delete(i);
+  }
+
+  openDialog(i): void {
     const dialogRef = this.dialog.open(SimpleMessageComponent, {
       width: '70%',
-      height:'70%',
+      height: '70%',
+      data: {number : i },
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
     });
+
+
   }
+
+
 
 }
 

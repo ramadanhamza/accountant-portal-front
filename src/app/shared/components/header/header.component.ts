@@ -1,4 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {AdminService} from '../../../controller/service/admin.service';
+import {Admin} from '../../../controller/model/admin.model';
 
 @Component({
   selector: 'app-header',
@@ -6,6 +8,9 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+
+  public adminPrenom = sessionStorage.getItem('prenom');
+  public adminNom = sessionStorage.getItem('nom');
 
   @Output() toggleSideBarForMe: EventEmitter<any> = new EventEmitter();
 

@@ -26,15 +26,13 @@ import { SponsorshipsComponent } from './sponsorships/sponsorships.component';
 import { ContactCreateComponent } from './modules/contacts/contact-create/contact-create.component';
 import {AgmCoreModule} from '@agm/core';
 import { RdvCreateComponent } from './modules/rdvs/rdv-create/rdv-create.component';
-import { registerLocaleData } from '@angular/common';
+import {CommonModule, registerLocaleData} from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PostulationCreateComponent } from './modules/postulations/postulation-create/postulation-create.component';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatCardModule} from '@angular/material/card';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {LoginComponent} from './login/login.component';
-import {LogoutComponent} from './logout/logout.component';
 import {PostCreateComponent} from './modules/posts/post-create/post-create.component';
 import {PostListComponent} from './modules/posts/post-list/post-list.component';
 import {PostListClientComponent} from './modules/posts/post-list-client/post-list-client.component';
@@ -47,6 +45,10 @@ import { NewsletterMessageComponent } from './modules/simple-message/newsletter-
 import {DialogModule} from 'primeng/dialog';
 import {ButtonModule} from 'primeng/button';
 import {MatTableModule} from '@angular/material/table';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { AdminComponent } from './admin/admin.component';
+import {AuthGuard} from './auth.guard';
+import { LogoutComponent } from './logout/logout.component';
 
 // the second parameter 'fr' is optional
 registerLocaleData(localeFr, 'fr');
@@ -76,11 +78,14 @@ registerLocaleData(localeFr, 'fr');
     PostListComponent,
     PostListClientComponent,
     PostListHomeComponent,
-    LoginComponent,
     LogoutComponent,
     SimpleMessageComponent,
     ResponseMessage,
     NewsletterMessageComponent,
+
+    AdminComponent,
+    LogoutComponent
+
   ],
     imports: [
       BrowserModule,
@@ -94,6 +99,7 @@ registerLocaleData(localeFr, 'fr');
       MatCardModule,
       MatDividerModule,
       MatFormFieldModule,
+      MatToolbarModule,
       EditorModule,
       AgmCoreModule.forRoot({
         apiKey: 'AIzaSyC4iUno5RgmQkuIOC0jP1DSLNIi_O4gX7Y'
@@ -110,9 +116,8 @@ registerLocaleData(localeFr, 'fr');
 
 MatTableModule
 
-
     ],
-  providers: [{provide: LOCALE_ID, useValue: 'fr' }],
+  providers: [{provide: LOCALE_ID, useValue: 'fr' }, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

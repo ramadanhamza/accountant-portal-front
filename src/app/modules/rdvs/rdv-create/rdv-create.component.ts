@@ -9,18 +9,13 @@ import {Rdv} from '../../../controller/model/rdv.model';
 })
 export class RdvCreateComponent implements OnInit {
 
-  public showMsg: boolean = false;
-  public showForm: boolean = true;
-
-  constructor(private rdvService: RdvService) { }
+  constructor(public rdvService: RdvService) { }
 
   get rdv(): Rdv {
     return this.rdvService.rdv;
   }
 
   public save() {
-    this.showForm = false;
-    this.showMsg = true;
     return this.rdvService.save();
   }
 

@@ -9,5 +9,7 @@ export class Postulation {
   public messageFile: File;
   public code: string;
   public message: string;
-  public cv:string;
+
+  public cv: string;
+  public reponse: string;
 }

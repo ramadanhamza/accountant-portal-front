@@ -1,18 +1,17 @@
 import { Injectable } from '@angular/core';
 import {Rdv} from '../model/rdv.model';
 import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {Message} from '../model/message.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RdvService {
 
+  public showForm: boolean = true;
+  public showMsg: boolean = false;
+
   private urlBase = 'http://localhost:8090';
   private url = '/stock/rdv/';
-
-  private message: Message;
 
   private _rdv: Rdv;
   private _rdvs: Array<Rdv>;
@@ -35,10 +34,14 @@ export class RdvService {
         data => {
           if (data > 0) {
             this.rdvs.push(this.rdv);
+            this.showForm = false;
+            this.showMsg = true;
           }
           else {
-            alert('Erreur lors de la création du contact' + data);
+            alert('Une erreur s\'est reproduite, veuillez réessayer');
           }
+        }, error => {
+          console.log(error);
         }
       );
     }
@@ -60,6 +63,20 @@ export class RdvService {
     );
   }
 
+  public changeReponse(i) {
+    const cCode = this.rdvs[i].code;
+    this.rdvs[i].reponse = 'Email envoyé';
+    this.http.put(this.urlBase + this.url + 'reponse/code/' + cCode + '/', this.rdvs[i]).subscribe(
+      data => {
+        if (data > 0) {
+          this.rdvs[i].reponse = 'Email envoyé';
+        }
+      }, error => {
+        console.log(error);
+      }
+    );
+  }
+
   public changeAffirmation(i, c) {
     const cCode = this.rdvs[i].code;
     if (c == 1) {
@@ -68,7 +85,7 @@ export class RdvService {
     else if (c == 0) {
       this.rdvs[i].affirmation = 'Refusé';
     }
-    this.http.put(this.urlBase + this.url + 'code/' + cCode + '/', this.rdvs[i]).subscribe(
+    this.http.put(this.urlBase + this.url + 'affirmation/code/' + cCode + '/', this.rdvs[i]).subscribe(
       data => {
         if (data > 0) {
           if (c == 1) {

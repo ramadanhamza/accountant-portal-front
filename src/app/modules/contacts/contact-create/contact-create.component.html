@@ -13,45 +13,107 @@
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas debitis, fugit natus?</p>
             <p><img src="../../../../assets/img/contact-us.jpg" alt="Image" class="img-fluid"></p>
           </div>
-          <div class="col-md-6" *ngIf="showForm">
-            <div class="row">
-              <div class="col-md-12 form-group">
-                <input type="text" class="form-control" name="prenom" id="prenom" placeholder="Votre prénom" [(ngModel)]="contact.client.prenom" aria-required="true">
+          <div class="col-md-6" *ngIf="this.contactService.showForm">
+            <form (ngSubmit)="save()" #myForm="ngForm">
+              <div class="row">
+                <div class="col-md-12 form-group">
+                  <input type="text" class="form-control" name="prenom" id="prenom" required minlength="2" maxlength="30" pattern="[A-Za-z]+" #prenom="ngModel" placeholder="Votre prénom" [(ngModel)]="contact.client.prenom">
+                  <div *ngIf="prenom.invalid && (prenom.dirty || prenom.touched)" class="alert alert-danger">
+                    <div *ngIf="prenom.errors.required">
+                      <li>Le prénom est obligatoire.</li>
+                    </div>
+                    <div *ngIf="prenom.errors.minlength">
+                      <li>Le prénom doit contenir au moins 2 caractères.</li>
+                    </div>
+                    <div *ngIf="prenom.errors.maxlength">
+                      <li>Le prénom doit contenir au moins 2 caractères.</li>
+                    </div>
+                    <div *ngIf="prenom.errors.pattern">
+                      <li>Le prénom ne peut pas contenir de chiffres.</li>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12 form-group">
-                <input type="text" class="form-control" name="nom" id="nom" placeholder="Votre nom" [(ngModel)]="contact.client.nom">
+              <div class="row">
+                <div class="col-md-12 form-group">
+                  <input type="text" class="form-control" name="nom" id="nom" required minlength="2" maxlength="30" pattern="[A-Za-z]+" #nom="ngModel" placeholder="Votre nom" [(ngModel)]="contact.client.nom">
+                  <div *ngIf="nom.invalid && (nom.dirty || nom.touched)" class="alert alert-danger">
+                    <div *ngIf="nom.errors.required">
+                      <li>Le nom est obligatoire.</li>
+                    </div>
+                    <div *ngIf="nom.errors.minlength">
+                      <li>Le nom doit contenir au moins 2 caractères.</li>
+                    </div>
+                    <div *ngIf="nom.errors.maxlength">
+                      <li>Le nom doit ne doit pas contenir plus de 30 caractères.</li>
+                    </div>
+                    <div *ngIf="nom.errors.pattern">
+                      <li>Le nom ne peut pas contenir de chiffres.</li>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12 form-group">
-                <input type="email" class="form-control" name="email" id="email" placeholder="Votre email" required [(ngModel)]="contact.client.email">
+              <div class="row">
+                <div class="col-md-12 form-group">
+                  <input type="email" class="form-control" name="email" id="email" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" #email="ngModel" placeholder="Votre email" [(ngModel)]="contact.client.email">
+                  <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+                    <div *ngIf="email.errors.required">
+                      <li>L'email est obligatoire.</li>
+                    </div>
+                    <div *ngIf="email.errors.pattern">
+                      <li>Veuillez entrer une adresse email valide.</li>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12 form-group">
-                <input type="text" class="form-control" name="tel" id="tel" placeholder="Votre numéro de téléphone" [(ngModel)]="contact.client.tel">
+              <div class="row">
+                <div class="col-md-12 form-group">
+                  <input type="text" class="form-control" name="tel" id="tel" required minlength="10" maxlength="10" pattern="[0-9]+" #tel="ngModel" placeholder="Votre numéro de téléphone" [(ngModel)]="contact.client.tel">
+                  <div *ngIf="tel.invalid && (tel.dirty || tel.touched)" class="alert alert-danger">
+                    <div *ngIf="tel.errors.required">
+                      <li>Le numéro de téléphone est obligatoire.</li>
+                    </div>
+                    <div *ngIf="tel.errors.minlength">
+                      <li>Entrez un numéro de téléphone contenant 10 chiffres non espacés.</li>
+                    </div>
+                    <div *ngIf="tel.errors.pattern">
+                      <li>Le numéro de téléphone ne doit contenir que des chiffres.</li>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12 form-group">
-                <input type="text" class="form-control" name="sujet" id="sujet" placeholder="Sujet" [(ngModel)]="contact.sujet">
+              <div class="row">
+                <div class="col-md-12 form-group">
+                  <input type="text" class="form-control" name="sujet" id="sujet" required maxlength="100" #sujet="ngModel" placeholder="Sujet" [(ngModel)]="contact.sujet">
+                  <div *ngIf="sujet.invalid && (sujet.dirty || sujet.touched)" class="alert alert-danger">
+                    <div *ngIf="sujet.errors.required">
+                      <li>Le sujet est obligatoire.</li>
+                    </div>
+                    <div *ngIf="sujet.errors.maxlength">
+                      <li>Le sujet est très long.</li>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12 form-group">
-                <textarea class="form-control" name="message" id="message" rows="7" placeholder="Votre message" [(ngModel)]="contact.message"></textarea>
+              <div class="row">
+                <div class="col-md-12 form-group">
+                  <textarea class="form-control" name="message" id="message" rows="7" required #message="ngModel" placeholder="Votre message" [(ngModel)]="contact.message"></textarea>
+                  <div *ngIf="message.invalid && (message.dirty || message.touched)" class="alert alert-danger">
+                    <div *ngIf="message.errors.required">
+                      <li>Le message est obligatoire.</li>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="col-12">
-                <input type="submit" value="Envoyer" class="btn btn-outline-dark rounded-0 py-2 px-4" (click)="save()">
+              <div class="row">
+                <div class="col-12">
+                  <input type="submit" value="Envoyer" class="btn btn-outline-dark rounded-0 py-2 px-4" [disabled]="!myForm.form.valid">
+                </div>
               </div>
-            </div>
+            </form>
           </div>
-          <div class="col-6">
-            <div class="row" *ngIf="showMsg">
+          <div class="col-6" *ngIf="this.contactService.showMsg">
+            <div class="row">
               <p style="color: green; font-size: 23px; text-align: center"><i class="fa fa-check"></i> Votre message a été envoyé avec succès.</p>
             </div>
           </div>

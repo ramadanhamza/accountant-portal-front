@@ -3,9 +3,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import {Rdv} from '../../../controller/model/rdv.model';
 import {RdvService} from '../../../controller/service/rdv.service';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { SimpleMessageComponent } from '../../simple-message/simple-message.component';
 import { Message } from 'src/app/controller/model/message.model';
-import { CloneVisitor } from '@angular/compiler/src/i18n/i18n_ast';
 
 
 @Component({
@@ -24,9 +22,14 @@ export class RdvListComponent implements OnInit {
   }
 
   constructor(private rdvService: RdvService,private dialog: MatDialog, private postservice: PostService) { }
+
   ngOnInit(): void {
     this.rdvService.findAll();
 
+  }
+
+  repondre(i) {
+    this.rdvService.changeReponse(i);
   }
 
   accepter(i) {
@@ -43,12 +46,10 @@ export class RdvListComponent implements OnInit {
     this.rdvService.delete(i);
   }
 
-  /*send(element, text) {
-    element.textContent = text;
-    element.disabled = true;
-  }*/
+
   openDialog(rdv:Rdv): void {
     const dialogRef = this.dialog.open(ResponseMessage, {
+
       width: '70%',
       height:'70%',
       data:{ rdv :rdv }
@@ -60,24 +61,16 @@ export class RdvListComponent implements OnInit {
 dialogRef.afterOpened().subscribe(result =>{
 this.clone(rdv);
 
-
 });
-
-
-
-
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
     });
-
-
-
-
   }
   rodv:Rdv=new Rdv();
 
-  clone(rdv:Rdv) {
+  clone(rdv:Rdv) {import { CloneVisitor } from '@angular/compiler/src/i18n/i18n_ast';
+
 
     console.log(rdv.affirmation);
 
@@ -138,21 +131,7 @@ rdv:Rdv;
   }
 
   ngOnInit(): void {
-
-
-  }
-
-
-
-
-
-
-
-
-
-
-
-
+}
   send(){
 
     this.postservice.send();
