@@ -9,25 +9,21 @@ import {RdvCreateComponent} from './modules/rdvs/rdv-create/rdv-create.component
 import {RdvListComponent} from './modules/rdvs/rdv-list/rdv-list.component';
 import { PostulationListComponent } from './modules/postulations/postulation-list/postulation-list.component';
 import { PostulationCreateComponent } from './modules/postulations/postulation-create/postulation-create.component';
-import {AuthGuardService} from './controller/service/auth-guard.service';
-import {LoginComponent} from './login/login.component';
-import {LogoutComponent} from './logout/logout.component';
 import {PostListComponent} from './modules/posts/post-list/post-list.component';
 import {PostCreateComponent} from './modules/posts/post-create/post-create.component';
 import {PostListClientComponent} from './modules/posts/post-list-client/post-list-client.component';
 import { SimpleMessageComponent } from './modules/simple-message/simple-message.component';
+import {AdminComponent} from './admin/admin.component';
+import {AuthGuard} from './auth.guard';
+import {LogoutComponent} from './logout/logout.component';
 
 const routes: Routes = [{
   path: 'admin',
-  component: LoginComponent,
-  }, {
-  path: 'logout',
-  component: LogoutComponent,
-  canActivate: [AuthGuardService]
+  component: AdminComponent,
   }, {
   path: 'admin/dashboard',
   component: DefaultComponent,
-  canActivate: [AuthGuardService],
+  canActivate: [AuthGuard],
   children: [{
     path: '',
     component: ClientsComponent
@@ -62,9 +58,11 @@ const routes: Routes = [{
   }, {
     path: 'postListClient',
     component: PostListClientComponent
-  },
-  {path: 'simpleMail',
-  component:SimpleMessageComponent}
+  }, {
+    path: 'logout',
+    component: LogoutComponent
+  }, {path: 'simpleMail',
+  component: SimpleMessageComponent}
 
 
 ];

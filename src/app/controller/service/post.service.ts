@@ -2,6 +2,8 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Message } from "../model/message.model";
 import { Post } from "../model/post.model";
+import {error} from '@angular/compiler/src/util';
+import {PostulationService} from './postulation.service';
 
 @Injectable({
   providedIn: 'root'
@@ -65,7 +67,10 @@ this.http.post( this.UrlBase + this.url + '/', this.post).subscribe(
     data => { if (data > 0)
     {console.log(this.post);
 
-    }else {alert('erreur lors la creation du post :' + data); }}
+    }else {alert('Une erreur s\'est reproduite, veuillez réessayer'); }},
+    error => {
+      console.log(error);
+  }
   );
 
 }else {
@@ -121,7 +126,7 @@ clone(post: Post): Post {
   }
 
 
-  constructor(private  http: HttpClient) { }
+  constructor(private  http: HttpClient, private postulationService: PostulationService) { }
 public init(){
     this.http.get<Array<Post>>(this.UrlBase + this.url + '/').subscribe(data => {
 this.timeline = data;
@@ -147,7 +152,7 @@ console.log(error);
      }
    );
   }
-  send(){
+  send(i){
     this.http.post( this.UrlBase +  '/stock/Message/mail', this.mail).subscribe(
       data => { if (data > 0)
       {console.log(this.post);
@@ -155,6 +160,9 @@ console.log(error);
       }else {alert('erreur lors la creation du mail :' + data); }}
 
     );
+
+    if (i != null){  this.postulationService.changeReponse(i); }
+
     this.mail = null;
 
 

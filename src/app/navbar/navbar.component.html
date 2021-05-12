@@ -1,26 +1,45 @@
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #323f45">
-  <a class="navbar-brand" routerLink="/">Asteris Consulting</a>
+<nav class="navbar navbar-expand navbar-dark navbar-up">
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav justify-content-around w-100">
+      <li class="nav-up-item">
+        <a><i class="fas fa-map-marker-alt"></i> 10, Rue Oum Rabie, Appt 12, Agdal - Rabat.</a>
+      </li>
+      <li class="nav-up-item">
+        <a><i class="fas fa-phone"></i> (+212) 05 37 77 21 22</a>
+      </li>
+      <li class="nav-up-item">
+        <a><i class="fas fa-envelope"></i> info@cybadvisory.com</a>
+      </li>
+      <li class="nav-up-item">
+        <a><i class="fas fa-clock"></i> 8H30-12H30 14H30-18H30</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<nav class="navbar navbar-expand-lg navbar-down">
+  <a class="navbar-brand" routerLink="/"><img src="assets/img/Logo-VCM-Final.png" alt="Asteris Consulting"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
+  <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
     <ul class="navbar-nav">
-      <li class="nav-item">
+      <li class="nav-down-item">
         <a class="nav-link" mat-list-item routerLinkActive="list-item-active" routerLink="/" [routerLinkActiveOptions]="{exact: true}">Accueil</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-down-item">
         <a class="nav-link" mat-list-item routerLinkActive="list-item-active" routerLink="/about">Qui sommes-nous ?</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-down-item">
         <a class="nav-link" mat-list-item routerLinkActive="list-item-active" routerLink="/rdv">Prendre un rendez-vous</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-down-item">
         <a class="nav-link" mat-list-item routerLinkActive="list-item-active" routerLink="/join">Nous rejoindre</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-down-item">
         <a class="nav-link" mat-list-item routerLinkActive="list-item-active" routerLink="/contact">Contact</a>
       </li>
-      <li class="nav-item">
+      <li class="nav-down-item">
         <a class="nav-link" mat-list-item routerLinkActive="list-item-active" routerLink="/postListClient">Articles</a>
       </li>
     </ul>

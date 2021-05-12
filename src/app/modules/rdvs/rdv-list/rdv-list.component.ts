@@ -16,9 +16,13 @@ export class RdvListComponent implements OnInit {
     return this.rdvService.rdvs;
   }
 
-  constructor(private rdvService: RdvService,private dialog: MatDialog) { }
+  constructor(private rdvService: RdvService, private dialog: MatDialog) { }
   ngOnInit(): void {
     this.rdvService.findAll();
+  }
+
+  repondre(i) {
+    this.rdvService.changeReponse(i);
   }
 
   accepter(i) {
@@ -35,10 +39,6 @@ export class RdvListComponent implements OnInit {
     this.rdvService.delete(i);
   }
 
-  /*send(element, text) {
-    element.textContent = text;
-    element.disabled = true;
-  }*/
   openDialog(): void {
     const dialogRef = this.dialog.open(SimpleMessageComponent, {
       width: '70%',

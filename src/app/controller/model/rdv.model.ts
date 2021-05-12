@@ -6,4 +6,5 @@ export class Rdv {
   public date: string;
   public affirmation: string;
   public code: string;
+  public reponse: string;
 }
