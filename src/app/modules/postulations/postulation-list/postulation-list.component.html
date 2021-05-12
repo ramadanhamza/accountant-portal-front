@@ -15,8 +15,8 @@
         <td>{{p.nom}}</td>
         <td>{{p.prenom}}</td>
         <td>{{p.email}}</td>
-        <td>{{p.messagefilename}} <a href="file:{{p.message}}" target="_blank" ><i class="fa fa-download"></i></a>  </td>
-        <td>  {{p.cvfilename}} <a href="file:{{p.cv}}"><i class="fa fa-download"></i></a></td>
+        <td>{{p.messagefilename}} <a href="{{p.message}}" download="{{p.messagefilename}}" ><i class="fa fa-download"></i></a>  </td>
+       <td>  {{p.cvfilename}} <a href="{{p.cv}}"   download="{{p.cvfilename}}" ><i class="fa fa-download"></i></a></td>
        <td>{{p.affirmation}}</td>
        <td><span (click)="accepter(i)"><i class="fa fa-check btn btn-outline-success"></i></span></td>
        <td><span (click)="refuser(i)"><i class="fa fa-times btn btn-outline-danger"></i></span></td>

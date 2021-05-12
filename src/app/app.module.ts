@@ -10,7 +10,7 @@ import { ClientsComponent } from './modules/clients/clients.component';
 import { ClientListComponent } from './modules/clients/client-list/client-list.component';
 import {HttpClientModule} from '@angular/common/http';
 import { RdvsComponent } from './modules/rdvs/rdvs.component';
-import { RdvListComponent } from './modules/rdvs/rdv-list/rdv-list.component';
+import { RdvListComponent,ResponseMessage } from './modules/rdvs/rdv-list/rdv-list.component';
 import { ContactListComponent } from './modules/contacts/contact-list/contact-list.component';
 import { ContactsComponent } from './modules/contacts/contacts.component';
 import {FormsModule} from '@angular/forms';
@@ -43,6 +43,10 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import { SimpleMessageComponent } from './modules/simple-message/simple-message.component';
+import { NewsletterMessageComponent } from './modules/simple-message/newsletter-message/newsletter-message.component';
+import {DialogModule} from 'primeng/dialog';
+import {ButtonModule} from 'primeng/button';
+import {MatTableModule} from '@angular/material/table';
 
 // the second parameter 'fr' is optional
 registerLocaleData(localeFr, 'fr');
@@ -74,7 +78,9 @@ registerLocaleData(localeFr, 'fr');
     PostListHomeComponent,
     LoginComponent,
     LogoutComponent,
-    SimpleMessageComponent
+    SimpleMessageComponent,
+    ResponseMessage,
+    NewsletterMessageComponent,
   ],
     imports: [
       BrowserModule,
@@ -98,6 +104,13 @@ registerLocaleData(localeFr, 'fr');
       MatInputModule,
       MatDividerModule,
       MatButtonModule,
+      DialogModule,
+     ButtonModule,
+
+
+MatTableModule
+
+
     ],
   providers: [{provide: LOCALE_ID, useValue: 'fr' }],
   bootstrap: [AppComponent]

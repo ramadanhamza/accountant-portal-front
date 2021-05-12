@@ -29,7 +29,6 @@ export class PostulationCreateComponent implements OnInit {
   onCileChange(evt): void {
     this.postulation.cvFile= evt.target.files[0];
     console.log(evt.target.files[0]);
-    console.log(this.postulation.messageFile);
     console.log(this.postulation.cvFile);
 
   }

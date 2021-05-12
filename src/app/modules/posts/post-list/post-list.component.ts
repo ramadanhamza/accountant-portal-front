@@ -45,6 +45,15 @@ export class PostListComponent implements OnInit {
 
 
 
+      displayImage(i) {
+        console.log(i);
+      let  pic = this.timeline[i].image;
+            let imgElement = document.getElementById(pic) as HTMLImageElement;
+
+            imgElement.src = pic.replace("/home/nyanpasu/vscodegit/accountant-portal-front/src/app/modules/posts/post-list","");
+
+        }
+
 
 
   }

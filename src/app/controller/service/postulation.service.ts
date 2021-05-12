@@ -19,6 +19,18 @@ export class PostulationService {
     this.http.get<Array<Postulation>>(this.urlBase + this.url).subscribe(
       data => {
         this.postulations = data;
+        for (let i=0 ; i< data.length;i++ ){
+
+
+
+
+          this.postulations[i].message= this.postulations[i].message.replace("/home/nyanpasu/vscodegit/accountant-portal-front/src/","");
+          this.postulations[i].cv= this.postulations[i].cv.replace("/home/nyanpasu/vscodegit/accountant-portal-front/src/","");
+
+              console.log( this.postulations[i].message);
+
+
+            }
       }, error => {
         console.log(error);
       }

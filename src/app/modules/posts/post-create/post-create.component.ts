@@ -35,9 +35,9 @@ export class PostCreateComponent implements OnInit {
 
 
   onCileChange(evt): void {
-    this.post.image= evt.target.files[0];
+    this.post.img= evt.target.files[0];
     console.log(evt.target.files[0]);
-    console.log(this.post.image);
+    console.log(this.post.img);
 
   }
 

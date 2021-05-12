@@ -20,14 +20,15 @@
       </div>
 
 
-      <div class=" col-sm-6 col-md  col-12 col">
+      <div class=" col-sm-6 col-md  col-12 col ">
         <h5 class="headin5_amrc col_white_amrc pt2">Abonnez-vous à notre newsletter</h5>
-        <div class="row">
-          <div class="col-7">
-            <input class="newsletter-input" type="email" name="email" id="email" placeholder="Votre email">
+        <div class="row ">
+          <div class="col-7 form-group">
+            <input class="newsletter-input form-control" type="email" name="email" id="email" placeholder="Votre email" [(ngModel)]="sub.email" >
+
           </div>
-          <div class="col-5">
-            <button type="submit" class="newsletter-submit">S'abonner</button>
+          <div class="col-5 form-group">
+            <button type="submit" class="newsletter-submit form-control"(click)="abonner()" >S'abonner</button>
           </div>
         </div>
       </div>

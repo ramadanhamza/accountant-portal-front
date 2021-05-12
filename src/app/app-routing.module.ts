@@ -1,3 +1,4 @@
+import { NewsletterMessageComponent } from './modules/simple-message/newsletter-message/newsletter-message.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {DefaultComponent} from './layouts/default/default.component';
@@ -46,7 +47,11 @@ const routes: Routes = [{
     }, {
       path: 'postList',
       component: PostListComponent
-    }]
+    },
+    {path: 'newsletter',
+    component:NewsletterMessageComponent
+    }
+  ]
   }, {
   path: '',
   component: MainComponent
@@ -64,7 +69,9 @@ const routes: Routes = [{
     component: PostListClientComponent
   },
   {path: 'simpleMail',
-  component:SimpleMessageComponent}
+  component:SimpleMessageComponent
+},
+
 
 
 ];
