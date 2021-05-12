@@ -1,0 +1,35 @@
+<mat-card>
+
+  <mat-card-content>
+
+
+
+
+
+    <mat-divider></mat-divider>
+
+    <mat-form-field appearance="fill">
+      <mat-label>subject</mat-label>
+      <input matInput [(ngModel)]="mail.subject">
+    </mat-form-field>
+
+
+    <mat-divider></mat-divider>
+
+      <mat-divider></mat-divider>
+  </mat-card-content>
+  <mat-label>mail content</mat-label>
+
+  <p-editor [(ngModel)]="mail.text" [style]="{'height':'320px'}"></p-editor>
+  <p>Value: {{mail.text||'empty'}}</p>
+
+
+  <mat-card-actions>
+   <div class="d-flex justify-content-center">      <button mat-raised-button (click)="send()" > send</button>
+  </div>
+  </mat-card-actions>
+  </mat-card>
+  <mat-divider></mat-divider>
+
+
+

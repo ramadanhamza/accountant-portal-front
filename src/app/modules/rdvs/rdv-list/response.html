@@ -1,0 +1,39 @@
+affirmation :{{data.rdv.affirmation}}
+
+  <mat-card>
+
+  <mat-card-content>
+    <mat-divider></mat-divider>
+    <div class="example-container">
+      <mat-form-field appearance="fill">
+        <mat-label>email du client</mat-label>
+        <input matInput placeholder="pat@example.com"  required [(ngModel)]="mail.to">
+        <mat-error *ngIf="mail.to">enter mail</mat-error>
+      </mat-form-field>
+    </div>
+
+
+
+
+    <mat-divider></mat-divider>
+
+    <mat-form-field appearance="fill" class="col-md-12">
+      <mat-label>sujet</mat-label>
+      <input matInput [(ngModel)]="mail.subject">
+    </mat-form-field>
+
+
+    <mat-divider></mat-divider>
+
+      <mat-divider></mat-divider>
+  </mat-card-content>
+  <mat-label>contenu du mail</mat-label>
+
+  <p-editor [(ngModel)]="mail.text" [style]="{'height':'320px'}"></p-editor>
+
+
+  <mat-card-actions>
+    <div class="d-flex justify-content-center">   <button mat-raised-button (click)="send()" > Envoyer</button>
+     <button mat-raised-button (click)=" onNoClick()" > Quitter</button>  </div>
+   </mat-card-actions>
+  </mat-card>
