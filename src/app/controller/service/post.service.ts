@@ -64,12 +64,9 @@ if (this.post.code == null){
 
 this.timeline.push(this.clone(this.post));
 var image =this.post.img;
-
-  formData.append( "image", image);
-
+formData.append( "image", image);
 formData.append( "content", this.post.content );
 formData.append( "titre", this.post.titre );
-
 formData.append( "date", this.post.date );
 
 
@@ -143,8 +140,8 @@ for (let i=0 ; i< this.timeline.length;i++ ){
 
 
 
-  this.timeline[i].image = this.timeline[i].image.replace("C:\\Users\\shari\\WebstormProjects\\accountant-portal\\src\\","");
-      console.log( this.timeline[i].image);
+  this.timeline[i].image = this.timeline[i].image.replace('C:\\Users\\shari\\WebstormProjects\\accountant-portal\\src\\','');
+  console.log( this.timeline[i].image);
 
 
     }
