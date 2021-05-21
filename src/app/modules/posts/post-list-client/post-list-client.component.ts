@@ -10,25 +10,40 @@ export interface Tile {
 @Component({
   selector: 'app-post-list-client',
   templateUrl: './post-list-client.component.html',
-  styleUrls: ['./post-list-client.component.css']
+  styleUrls: ['./post-list-client.component.scss']
 })
 
 export class PostListClientComponent implements OnInit {
 
+  p: number = 1;
+  recherche: any;
 
 
-  constructor(private postservice: PostService) { }
+
+  constructor(private postService: PostService) { }
   // tslint:disable-next-line:typedef
 
   public get timeline(): Array<Post> {
-    if (this.postservice.timeline == null) {
-      this.postservice.timeline = new Array<Post>();
+    if (this.postService.timeline == null) {
+      this.postService.timeline = new Array<Post>();
     }
-    return this.postservice.timeline;
+    return this.postService.timeline;
+  }
+
+  search() {
+    if (this.recherche == "") {
+      this.ngOnInit();
+    }
+    else {
+      this.postService.timeline = this.postService.timeline.filter(res => {
+        return res.titre.toLocaleLowerCase().match(this.recherche.toLocaleLowerCase())
+          || res.date.toLocaleLowerCase().match(this.recherche.toLocaleLowerCase());
+      });
+    }
   }
 
   ngOnInit(): void {
-    this.postservice.init();
+    this.postService.init();
   }
   tiles: Tile[] = [
     {cols: 1, rows: 2, color: 'lightblue'},

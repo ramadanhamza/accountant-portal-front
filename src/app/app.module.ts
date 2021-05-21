@@ -10,11 +10,11 @@ import { ClientsComponent } from './modules/clients/clients.component';
 import { ClientListComponent } from './modules/clients/client-list/client-list.component';
 import {HttpClientModule} from '@angular/common/http';
 import { RdvsComponent } from './modules/rdvs/rdvs.component';
-import { RdvListComponent,ResponseMessage } from './modules/rdvs/rdv-list/rdv-list.component';
+import { RdvListComponent, ResponseMessage } from './modules/rdvs/rdv-list/rdv-list.component';
 import { ContactListComponent } from './modules/contacts/contact-list/contact-list.component';
 import { ContactsComponent } from './modules/contacts/contacts.component';
 import {FormsModule} from '@angular/forms';
-import { PostulationListComponent ,PostulationMessage} from './modules/postulations/postulation-list/postulation-list.component';
+import { PostulationListComponent , PostulationMessage} from './modules/postulations/postulation-list/postulation-list.component';
 import { PostulationsComponent } from './modules/postulations/postulations.component';
 import { FooterComponent } from './footer/footer.component';
 import { MainComponent } from './main/main.component';
@@ -49,8 +49,19 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { AdminComponent } from './admin/admin.component';
 import {AuthGuard} from './auth.guard';
 import { LogoutComponent } from './logout/logout.component';
+
 import {MatIconModule} from '@angular/material/icon';
 import { ArticleComponent } from './article/article.component';
+
+import {Ng2SearchPipeModule} from 'ng2-search-filter';
+import {Ng2OrderModule} from 'ng2-order-pipe';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { PostDetailComponent } from './post-detail/post-detail.component';
+import { ChangerMdpComponent } from './modules/settings/changer-mdp/changer-mdp.component';
+import { AddAdminComponent } from './modules/settings/add-admin/add-admin.component';
+import { AdminsComponent } from './modules/admins/admins.component';
+import { AdminListComponent } from './modules/admins/admin-list/admin-list.component';
+
 
 // the second parameter 'fr' is optional
 registerLocaleData(localeFr, 'fr');
@@ -87,7 +98,13 @@ registerLocaleData(localeFr, 'fr');
     AdminComponent,
     LogoutComponent,
     PostulationMessage,
-    ArticleComponent
+
+    ArticleComponent,
+    PostDetailComponent,
+    ChangerMdpComponent,
+    AddAdminComponent,
+    AdminsComponent,
+    AdminListComponent
 
   ],
     imports: [
@@ -104,6 +121,9 @@ registerLocaleData(localeFr, 'fr');
       MatFormFieldModule,
       MatToolbarModule,
       EditorModule,
+      Ng2SearchPipeModule,
+      Ng2OrderModule,
+      NgxPaginationModule,
       AgmCoreModule.forRoot({
         apiKey: 'AIzaSyC4iUno5RgmQkuIOC0jP1DSLNIi_O4gX7Y'
       }),

@@ -1,3 +1,6 @@
+<nav class="navbar">
+  <input class="form-control" type="text" name="recherche" [(ngModel)]="recherche" (ngModelChange)="search()" placeholder="Rechercher ...">
+</nav>
 <div class="card">
 
   <!-- <div class="d-flex justify-content-end  ">
@@ -11,36 +14,37 @@
 
   </div>-->
   <div class="card-header">
-    <p>Post Timeline</p>
+
+    <p>Liste des articles</p>
+
   </div>
   <div class="card-body">
-    <table class="table table-striped table-bordered" *ngFor="let c of timeline; index as i">
+    <table class="table table-striped table-bordered" *ngFor="let c of timeline | paginate: {itemsPerPage:5, currentPage:p}; index as i;">
       <thead>
-      <td><label for="">Post code :{{c.code}}</label> </td>
+      <td><label for="">Code de l'article :<br>{{c.code}}</label> </td>
       <td><span (click)="delete(i,c)"><i class="fa fa-trash btn btn-danger"></i></span> delete</td>
       <td><span (click)="edit(i,c)"  (click)="openDialog()"><i class="fa fa-edit btn btn-warning"></i> edit </span>
     </td>
       </thead>
       <tbody>
       <tr>
-        <td colspan="3" [innerHTML]="c.content">{{c.content}}</td>
+        <td colspan="3" [innerHTML]="c.content">Contenu :<br>{{c.content}}</td>
       </tr>
       <tr>
-        <td colspan="3">{{c.date | date: 'short'}}</td>
+        <td colspan="3">Date de publication :<br>{{c.date | date: 'short'}}</td>
       </tr>
       <tr>
-        <td colspan="3">{{c.titre}}</td>
+        <td colspan="3">Titre :<br>{{c.titre}}</td>
       </tr>
 
+
       <tr *ngIf ="c.image !== null">
-        <td colspan="3"><img src="{{c.image}}" alt="no Image" width="40%%"></td>
+        <td colspan="3"><img src="{{c.image}}" alt="no Image" width="400px"></td>
+
       </tr>
       </tbody>
-      <tfoot>
-      <tr>
-      </tr>
-      </tfoot>
     </table>
+    <pagination-controls (pageChange)="p = $event"></pagination-controls>
   </div>
   <div class="card-footer"></div>
 </div>

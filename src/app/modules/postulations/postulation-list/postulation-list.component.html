@@ -1,21 +1,24 @@
+<nav class="navbar">
+  <input class="form-control" type="text" name="recherche" [(ngModel)]="recherche" (ngModelChange)="search()" placeholder="Rechercher ...">
+</nav>
 <div class="card">
-  <div class="card-header"></div>
+  <div class="card-header">Liste des postulations</div>
   <div class="card-body">
     <table class="table table-striped table-hover">
       <thead>
-      <th>Nom</th>
-      <th>Prenom</th>
-      <th>Email</th>
-      <th>Message</th>
-      <th>cv</th>
-      <th>Affirmation</th>
-      <th>Envoi</th>
+      <th (click)="sort('nom')">Nom <i style="cursor: pointer;" class="fa fa-sort"></i></th>
+      <th (click)="sort('prenom')">Prenom <i style="cursor: pointer;" class="fa fa-sort"></i></th>
+      <th (click)="sort('email')">Email <i style="cursor: pointer;" class="fa fa-sort"></i></th>
+      <th (click)="sort('message')">Message <i style="cursor: pointer;" class="fa fa-sort"></i></th>
+      <th (click)="sort('cv')">cv <i style="cursor: pointer;" class="fa fa-sort"></i></th>
+      <th (click)="sort('affirmation')">Affirmation <i style="cursor: pointer;" class="fa fa-sort"></i></th>
+      <th (click)="sort('reponse')">Envoi <i style="cursor: pointer;" class="fa fa-sort"></i></th>
       <th colspan="4">Action</th>
       </thead>
       <tbody>
-      <tr *ngFor="let p of postulations,index as i">
-        <td>{{p.nom}}</td>
-        <td>{{p.prenom}}</td>
+      <tr *ngFor="let p of postulations | orderBy: key: reverse | paginate: {itemsPerPage:30, currentPage:p}; index as i;">
+        <td>{{p.nom | titlecase}}</td>
+        <td>{{p.prenom | titlecase}}</td>
         <td>{{p.email}}</td>
         <td>{{p.messagefilename}} <a href="{{p.message}}" download="{{p.messagefilename}}" ><i class="fa fa-download"></i></a>  </td>
        <td>  {{p.cvfilename}} <a href="{{p.cv}}"   download="{{p.cvfilename}}" ><i class="fa fa-download"></i></a></td>
@@ -29,6 +32,7 @@
       </tr>
 
       </tbody>
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
     </table>
   </div>
 </div>

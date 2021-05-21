@@ -62,78 +62,62 @@ export class PostService {
     this._timeline = value;
   }
 
-  public save() {
-    var formData: FormData = new FormData();
-    if (this.post.code == null) {
-      this.timeline.push(this.clone(this.post));
-      var image = this.post.img;
+public save() {
+  var formData:FormData = new FormData();
+if (this.post.code == null){
 
-      formData.append('image', image);
 
-      formData.append('content', this.post.content);
-      formData.append('titre', this.post.titre);
+this.timeline.push(this.clone(this.post));
+var image =this.post.img;
+formData.append( "image", image);
+formData.append( "content", this.post.content );
+formData.append( "titre", this.post.titre );
+formData.append( "date", this.post.date );
 
-      formData.append('date', this.post.date);
 
-      this.http.post(this.UrlBase + this.url + '/', formData).subscribe(
-        (data) => {
-          if (data > 0) {
-            console.log(this.post);
-          } else {
-            alert("Une erreur s'est reproduite, veuillez réessayer");
-          }
-        },
-        (error) => {
-          console.log(error);
-        }
-      );
-      this.post = null;
-    } else {
-      this.timeline[this.index] = this.clone(this.post);
-      const dcode = this.timeline[this.index].code;
-      console.log(dcode);
-      var image = this.timeline[this.index].img;
-      if (image !== null) formData.append('image', image);
+this.http.post( this.UrlBase + this.url + '/', formData).subscribe(
+    data => { if (data > 0)
+    {console.log(this.post);
 
-      formData.append('content', this.timeline[this.index].content);
-      formData.append('titre', this.timeline[this.index].titre);
-
-      formData.append('date', this.timeline[this.index].date);
-      this.http
-        .put(this.UrlBase + this.url + '/code/' + dcode + '/', formData)
-        .subscribe(
-          (data) => {
-            if (data > 0) {
-            } else {
-              alert('update unsuccessful');
-            }
-          },
-          (error) => {
-            console.log(error);
-          }
-        );
-    }
+    }else {alert('Une erreur s\'est reproduite, veuillez réessayer'); }},
+    error => {
+      console.log(error);
   }
+  );
+  this.post = null;
+
+}else {
+  this.timeline[this.index] = this.clone(this.post);
+  const dcode = this.timeline[this.index].code;
+  console.log(dcode);
+  var image =this.timeline[this.index].img;
+if (image!==null) {
+  formData.append( "image", image);
+}
+
+formData.append( "content", this.timeline[this.index].content );
+formData.append( "titre", this.timeline[this.index].titre );
+
+  this.http.put(this.UrlBase + this.url + '/code/' + dcode + '/' , formData).subscribe(data => {
+      if (data > 0){
+
+
+      }
+      else { alert('update unsuccessful');
+      }
+
+    }
+    );
+}
+
+}
 
   edit(i: number, post: Post) {
     this.index = i;
     this._post = this.clone(post);
   }
 
-  clone(post: Post): Post {
-    const myClone = new Post();
-    myClone.titre = post.titre;
-    myClone.content = post.content;
-    myClone.date = post.date;
-    myClone.code = post.code;
 
-    return myClone;
-  }
-
-  constructor(
-    private http: HttpClient,
-    private postulationService: PostulationService
-  ) {}
   public init() {
     this.http.get<Array<Post>>(this.UrlBase + this.url + '/').subscribe(
       (data) => {
@@ -151,8 +135,22 @@ export class PostService {
       (error) => {
         console.log(error);
       }
-    );
+    );}
+clone(post: Post): Post {
+   const myClone = new Post();
+   myClone.titre = post.titre;
+   myClone.content = post.content;
+   myClone.code = post.code;
+   myClone.img = post.img;
+
+
+   return myClone;
   }
+
+
+  constructor(private  http: HttpClient, private postulationService: PostulationService) { }
+
+
   public delete(index: number, s: Post) {
     const dcode = this.timeline[index].code;
     console.log(dcode);

@@ -9,14 +9,23 @@
         <li>
           {{adminPrenom | titlecase}} {{adminNom | titlecase}}
         </li>
-        <li>
-          <button mat-button routerLink="/admin/dashboard/password-change">
+        <button mat-button [matMenuTriggerFor]="menu">
+          <mat-icon>settings</mat-icon> Paramètres
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-button routerLink="/admin/dashboard/changerMdp">
             <mat-icon>vpn_key</mat-icon> Changer de mot de passe
           </button>
+          <button mat-button routerLink="/admin/dashboard/ajouterAdmin">
+            <mat-icon>group_add</mat-icon> Ajouter un administrateur
+          </button>
+        </mat-menu>
+        <li>
+
         </li>
         <li>
           <button mat-button routerLink="/logout">
-            <mat-icon>person_outline</mat-icon> Se déconnecter
+            <mat-icon>subdirectory_arrow_right</mat-icon> Se déconnecter
           </button>
         </li>
       </ul>

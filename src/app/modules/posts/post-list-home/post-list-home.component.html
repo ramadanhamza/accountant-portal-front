@@ -2,24 +2,30 @@
 <section class="showcase">
   <div class="container-fluid p-0">
     <div class="row no-gutters">
-      <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('../../../../{{timeline[timeline.length-1].image}}');"></div>
-      <div class="col-lg-6 order-lg-1 my-auto showcase-text">
-        <h2>{{timeline[timeline.length-1].titre}}</h2>
-        <p [innerHTML]="timeline[timeline.length-1].content" class="lead mb-0">{{timeline[timeline.length-1].content}}</p>
+      <div class="img-wrapper col-lg-6 order-lg-2 text-white"><img src="{{timeline[0].image}}"></div>
+      <div class="col-lg-6 order-lg-1">
+        <h2>{{timeline[0].titre}}</h2>
+        <p [innerHTML]="timeline[0].content.slice(0,500)" class="lead mb-0"></p>
+        <a class="lire-plus" [routerLink]="['/postDetail/', timeline[0].titre, timeline[0].date,
+        timeline[0].image, timeline[0].content]">Lire Plus</a>
       </div>
     </div>
     <div class="row no-gutters">
-      <div class="col-lg-6 text-white showcase-img" style="background-image: url('../../../../{{timeline[timeline.length-2].image}}');"></div>
-      <div class="col-lg-6 my-auto showcase-text">
-        <h2>{{timeline[timeline.length-2].titre}}</h2>
-        <p [innerHTML]="timeline[timeline.length-2].content" sclass="lead mb-0">{{timeline[timeline.length-2].content}}</p>
+      <div class="img-wrapper col-lg-6 text-white"><img src="{{timeline[1].image}}"></div>
+      <div class="col-lg-6">
+        <h2>{{timeline[1].titre}}</h2>
+        <p [innerHTML]="timeline[1].content.slice(0,500)" class="lead mb-0"></p>
+        <a class="lire-plus" [routerLink]="['/postDetail/', timeline[1].titre, timeline[1].date,
+        timeline[1].image, timeline[1].content]">Lire Plus</a>
       </div>
     </div>
     <div class="row no-gutters">
-      <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('../../../../{{timeline[timeline.length-3].image}}');"></div>
-      <div class="col-lg-6 order-lg-1 my-auto showcase-text">
-        <h2>{{timeline[timeline.length-3].titre}}</h2>
-        <p [innerHTML]="timeline[timeline.length-2].content" sclass="lead mb-0">{{timeline[timeline.length-3].content}}</p>
+      <div class="img-wrapper col-lg-6 order-lg-2 text-white"><img src="{{timeline[2].image}}"></div>
+      <div class="col-lg-6 order-lg-1">
+        <h2>{{timeline[2].titre}}</h2>
+        <p [innerHTML]="timeline[2].content.slice(0,500)" class="lead mb-0"></p>
+        <a class="lire-plus" [routerLink]="['/postDetail/', timeline[2].titre, timeline[2].date,
+        timeline[2].image, timeline[2].content]">Lire Plus</a>
       </div>
     </div>
   </div>

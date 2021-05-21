@@ -26,7 +26,7 @@
                       <li>Le prénom doit contenir au moins 2 caractères.</li>
                     </div>
                     <div *ngIf="prenom.errors.pattern">
-                      <li>Le prénom ne peut pas contenir de chiffres.</li>
+                      <li>Le prénom ne peut pas contenir de chiffres ou de caractères spéciaux.</li>
                     </div>
                   </div>
                 </div>
@@ -45,7 +45,7 @@
                       <li>Le nom doit ne doit pas contenir plus de 30 caractères.</li>
                     </div>
                     <div *ngIf="nom.errors.pattern">
-                      <li>Le nom ne peut pas contenir de chiffres.</li>
+                      <li>Le nom ne peut pas contenir de chiffres ou de caractères spéciaux.</li>
                     </div>
                   </div>
                 </div>
@@ -66,13 +66,13 @@
               <div class="row">
                 <div class="col-md-12 form-group">
                   <input type="file" class="form-control" name="cv-file" id="cv-file" required (change)="onCileChange($event)">
-                  <label for="cv-file">Votre CV</label>
+                  <label for="cv-file">{{cvFileName}}</label>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-12 form-group">
                   <input type="file" class="form-control" name="message-file" id="message-file" (change)="onMileChange($event)">
-                  <label for="message-file">Autre fichier</label>
+                  <label for="message-file">{{messageFileName}}</label>
                  </div>
               </div>
               <div class="row">
