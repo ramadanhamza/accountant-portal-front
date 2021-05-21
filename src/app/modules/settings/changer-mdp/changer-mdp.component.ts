@@ -18,6 +18,8 @@ export class ChangerMdpComponent implements OnInit {
   constructor(public adminService: AdminService) { }
 
   ngOnInit(): void {
+    this.adminService.pass = null;
+    this.adminService.mdpChange = false;
   }
 
   edit() {

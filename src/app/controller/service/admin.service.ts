@@ -17,6 +17,7 @@ export class AdminService {
 
   public showMsg: boolean = false;
   public showForm: boolean = true;
+  public mdpChange: boolean = false;
 
   private urlBase = 'http://localhost:8090';
   private url = '/stock/admin/';
@@ -99,7 +100,9 @@ export class AdminService {
     formData.append( "password", this.pass);
     console.log(test2);
     this.http.put(this.urlBase + this.url + '/login/', formData).subscribe(data => {
-        if (data > 0){ }
+        if (data > 0){
+          this.mdpChange = true;
+        }
         else {
           alert('update unsuccessful | ' + data);
 
