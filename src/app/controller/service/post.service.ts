@@ -144,7 +144,7 @@ for (let i=0 ; i< this.timeline.length;i++ ){
 
 
 
-  this.timeline[i].image= this.timeline[i].image.replace("/home/nyanpasu/vscodegit/accountant-portal-front/src/","");
+  this.timeline[i].image = this.timeline[i].image.replace("C:\\Users\\shari\\WebstormProjects\\accountant-portal\\src\\","");
       console.log( this.timeline[i].image);
 
 

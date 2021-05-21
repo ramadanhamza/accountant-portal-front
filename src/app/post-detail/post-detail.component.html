@@ -1,0 +1,8 @@
+<body>
+<app-navbar></app-navbar>
+<h1>{{postTitre}}</h1>
+<h2 class="date">{{postDate | date: 'short'}}</h2>
+<img src="{{postImage}}">
+<p [innerHTML]="postContent"></p>
+
+<app-footer></app-footer>

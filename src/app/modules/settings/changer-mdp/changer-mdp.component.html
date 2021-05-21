@@ -1,0 +1,12 @@
+<form (ngSubmit)="edit()" #myForm="ngForm">
+  <div class="row">
+    <div class="col-md-12 form-group">
+      <input type="text" class="form-control" name="mdp" id="mdp" required placeholder="Votre nouveau mot de passe" [(ngModel)]="this.adminService.pass">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <input type="submit" value="Valider" class="btn btn-outline-dark rounded-0 py-2 px-4" [disabled]="!myForm.form.valid">
+    </div>
+  </div>
+</form>

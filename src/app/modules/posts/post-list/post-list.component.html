@@ -1,10 +1,12 @@
+<nav class="navbar">
+  <input class="form-control" type="text" name="recherche" [(ngModel)]="recherche" (ngModelChange)="search()" placeholder="Rechercher ...">
+</nav>
 <div class="card">
   <div class="card-header">
-    <p>Post Timeline</p>
-
+    <p>Liste des articles</p>
   </div>
   <div class="card-body">
-    <table class="table table-striped table-bordered" *ngFor="let c of timeline; index as i">
+    <table class="table table-striped table-bordered" *ngFor="let c of timeline | paginate: {itemsPerPage:5, currentPage:p}; index as i;">
       <thead>
       <td><label for="">Post code :{{c.code}}</label> </td>
       <td><span (click)="delete(i,c)"><i class="fa fa-trash btn btn-danger"></i></span> delete</td>
@@ -22,13 +24,10 @@
         <td colspan="3">{{c.titre}}</td>
       </tr>
       <tr>
-        <td colspan="3"><img src="{{c.image}}" alt="no Image" width="100%"></td>
+        <td colspan="3"><img src="{{c.image}}" alt="no Image" width="400px"></td>
       </tr>
       </tbody>
-      <tfoot>
-      <tr>
-      </tr>
-      </tfoot>
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
     </table>
   </div>
   <div class="card-footer"></div>

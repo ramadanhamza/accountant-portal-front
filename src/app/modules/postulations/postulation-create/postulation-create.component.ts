@@ -9,6 +9,9 @@ import {Postulation} from '../../../controller/model/postulation.model';
 })
 export class PostulationCreateComponent implements OnInit {
 
+  cvFileName = 'Votre CV';
+  messageFileName = 'Autre fichier';
+
   constructor(public postulationService: PostulationService) { }
 
   get postulation(): Postulation {
@@ -22,13 +25,15 @@ export class PostulationCreateComponent implements OnInit {
   ngOnInit(): void {
   }
   onCileChange(evt): void {
-    this.postulation.cvFile= evt.target.files[0];
+    this.postulation.cvFile = evt.target.files[0];
+    this.cvFileName = this.postulation.cvFile.name;
     console.log(evt.target.files[0]);
     console.log(this.postulation.cvFile);
 
   }
   onMileChange(evnt): void {
-    this.postulation.messageFile= evnt.target.files[0];
+    this.postulation.messageFile = evnt.target.files[0];
+    this.messageFileName = this.postulation.messageFile.name;
     console.log(evnt.target.files[0]);
     console.log(this.postulation.messageFile);
 

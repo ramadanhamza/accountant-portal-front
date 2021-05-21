@@ -13,10 +13,39 @@ import { Message } from 'src/app/controller/model/message.model';
   styleUrls: ['./postulation-list.component.scss']
 })
 export class PostulationListComponent implements OnInit {
+
+  p: number = 1;
+  recherche: any;
+
   fileUrl;
 
   get postulations(): Array<Postulation> {
     return this.postulationService.postulations;
+  }
+
+  search() {
+    if (this.recherche == "") {
+      this.ngOnInit();
+    }
+    else {
+      this.postulationService.postulations = this.postulationService.postulations.filter(res => {
+        return res.nom.toLocaleLowerCase().match(this.recherche.toLocaleLowerCase())
+          || res.prenom.toLocaleLowerCase().match(this.recherche.toLocaleLowerCase())
+          || res.email.toLocaleLowerCase().match(this.recherche.toLocaleLowerCase())
+          || res.message.toLocaleLowerCase().match(this.recherche.toLocaleLowerCase())
+          || res.cv.toLocaleLowerCase().match(this.recherche.toLocaleLowerCase())
+          || res.affirmation.toLocaleLowerCase().match(this.recherche.toLocaleLowerCase())
+          || res.reponse.toLocaleLowerCase().match(this.recherche.toLocaleLowerCase());
+      });
+    }
+  }
+
+  key: string;
+  reverse: boolean = false;
+
+  sort(key) {
+    this.key = key;
+    this.reverse = !this.reverse;
   }
 
   constructor(private postulationService: PostulationService,private sanitizer: DomSanitizer,private dialog: MatDialog,private postService:PostService) { }

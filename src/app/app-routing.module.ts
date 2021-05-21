@@ -17,10 +17,15 @@ import { SimpleMessageComponent } from './modules/simple-message/simple-message.
 import {AdminComponent} from './admin/admin.component';
 import {AuthGuard} from './auth.guard';
 import {LogoutComponent} from './logout/logout.component';
+import {PostDetailComponent} from './post-detail/post-detail.component';
+import {ChangerMdpComponent} from './modules/settings/changer-mdp/changer-mdp.component';
+import {ChangerNdcComponent} from './modules/settings/changer-ndc/changer-ndc.component';
+import {AddAdminComponent} from './modules/settings/add-admin/add-admin.component';
+import {AdminListComponent} from './modules/admins/admin-list/admin-list.component';
 
 const routes: Routes = [{
   path: 'admin',
-  component: AdminComponent,
+  component: AdminComponent
   }, {
   path: 'admin/dashboard',
   component: DefaultComponent,
@@ -43,14 +48,25 @@ const routes: Routes = [{
     }, {
       path: 'postList',
       component: PostListComponent
-    },
-    {path: 'newsletter',
-    component:NewsletterMessageComponent
-    }
-  ]
+    }, {
+      path: 'newsletter',
+      component: NewsletterMessageComponent
+    }, {
+      path: 'changerMdp',
+      component: ChangerMdpComponent
+    }, {
+      path: 'changerNdc',
+      component: ChangerNdcComponent
+    }, {
+      path: 'ajouterAdmin',
+      component: AddAdminComponent
+    }, {
+      path: 'admins',
+      component: AdminListComponent
+    }]
   }, {
-  path: '',
-  component: MainComponent
+    path: '',
+    component: MainComponent
   }, {
     path: 'contact',
     component: ContactCreateComponent
@@ -63,16 +79,19 @@ const routes: Routes = [{
   }, {
     path: 'postListClient',
     component: PostListClientComponent
-  },
-  {path: 'simpleMail',
-  component:SimpleMessageComponent
+  }, {
+    path: 'simpleMail',
+    component: SimpleMessageComponent
   }, {
     path: 'logout',
     component: LogoutComponent
-  }, {path: 'simpleMail',
-  component: SimpleMessageComponent},
-
-];
+  }, {
+  path: 'simpleMail',
+  component: SimpleMessageComponent
+  }, {
+  path: 'postDetail/:titre/:date/:image/:content',
+  component: PostDetailComponent
+}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

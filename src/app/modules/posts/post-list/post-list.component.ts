@@ -11,6 +11,22 @@ import {MatDialog} from '@angular/material/dialog';
 })
 export class PostListComponent implements OnInit {
 
+  p: number = 1;
+  recherche: any;
+
+  search() {
+    if (this.recherche == "") {
+      this.ngOnInit();
+    }
+    else {
+      this.postservice.timeline = this.postservice.timeline.filter(res => {
+        return res.code.toLocaleLowerCase().match(this.recherche.toLocaleLowerCase())
+          || res.titre.toLocaleLowerCase().match(this.recherche.toLocaleLowerCase())
+          || res.content.toLocaleLowerCase().match(this.recherche.toLocaleLowerCase());
+      });
+    }
+  }
+
   constructor(private postservice: PostService,private dialog: MatDialog) { }
   delete(index: number , post: Post) {
     this.postservice.delete(index , post);

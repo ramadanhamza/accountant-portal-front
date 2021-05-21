@@ -9,8 +9,8 @@ import {Admin} from '../../../controller/model/admin.model';
 })
 export class HeaderComponent implements OnInit {
 
-  public adminPrenom = sessionStorage.getItem('prenom');
-  public adminNom = sessionStorage.getItem('nom');
+  public adminPrenom = JSON.parse(sessionStorage.getItem('prenom'));
+  public adminNom = JSON.parse(sessionStorage.getItem('nom'));
 
   @Output() toggleSideBarForMe: EventEmitter<any> = new EventEmitter();
 

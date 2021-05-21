@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {PostService} from '../controller/service/post.service';
 
 @Component({
   selector: 'app-posts',

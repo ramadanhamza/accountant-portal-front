@@ -1,0 +1,27 @@
+<nav class="navbar">
+  <input class="form-control" type="text" name="recherche" [(ngModel)]="recherche" (ngModelChange)="search()" placeholder="Rechercher ...">
+</nav>
+<div class="card">
+  <div class="card-header">Listes des administrateurs</div>
+  <div class="card-body">
+    <table class="table table-striped table-hover">
+      <thead>
+      <th (click)="sort('nom')">Nom <i style="cursor: pointer;" class="fa fa-sort"></i></th>
+      <th (click)="sort('prenom')">Prenom <i style="cursor: pointer;" class="fa fa-sort"></i></th>
+      <th (click)="sort('login')">Nom de compte <i style="cursor: pointer;" class="fa fa-sort"></i></th>
+      <th (click)="sort('password')">Mot de passe <i style="cursor: pointer;" class="fa fa-sort"></i></th>
+      <th>Action</th>
+      </thead>
+      <tbody>
+      <tr *ngFor="let a of admins | orderBy: key: reverse | paginate: {itemsPerPage:30, currentPage:p}; index as i;">
+        <td>{{a.nom | titlecase}}</td>
+        <td>{{a.prenom | titlecase}}</td>
+        <td>{{a.login}}</td>
+        <td>{{a.password}}</td>
+        <td><button style="border: none; background-color: transparent;" (click)="delete(i)"><i class="fa fa-times"></i></button></td>
+      </tr>
+      </tbody>
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </table>
+  </div>
+</div>

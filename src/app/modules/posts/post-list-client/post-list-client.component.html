@@ -1,25 +1,24 @@
 <body>
 <app-navbar></app-navbar>
-<div class="card-body">
-  <table class="table table-striped table-bordered" *ngFor="let t of timeline; index as i">
-    <thead>
-      <tr>
-        <td colspan="3"><img src="{{t.image}}" width="200" height="121" alt="no Image"></td>
-      </tr>
-    <td>{{t.titre}}</td>
-    </thead>
-    <tbody>
-    <tr>
-      <td>{{t.date | date: 'short'}}</td>
-    </tr>
-    <tr>
-      <td [innerHTML]="t.content">{{t.content}}</td>
-    </tr>
-
-    </tbody>
-  </table>
-
+<nav class="navbar">
+  <input class="form-control" type="text" name="recherche" [(ngModel)]="recherche" (ngModelChange)="search()" placeholder="Rechercher ...">
+</nav>
+<div>
+  <div class="card-body" *ngFor="let t of timeline | orderBy: 'date': true | paginate: {itemsPerPage:5, currentPage:p}; index as i;" [hidden]="t.hidden">
+    <div class="row">
+      <div class="img-wrapper col-md-4 col-sm-6">
+        <img src="{{t.image}}">
+      </div>
+      <div class="col-md-8 col-sm-6">
+        <div class="row" class="title">{{t.titre}}</div>
+        <div class="row" class="date"><i class="far fa-calendar-alt"></i> {{t.date | date: 'short'}}</div>
+        <div class="row" class="content" [innerHTML]="t.content.slice(0,500)"></div>
+        <a class="lire-plus" [routerLink]="['/postDetail/', t.titre, t.date, t.image, t.content]">Lire Plus</a>
+      </div>
+    </div>
+  </div>
 </div>
 
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
 
 <app-footer></app-footer>
