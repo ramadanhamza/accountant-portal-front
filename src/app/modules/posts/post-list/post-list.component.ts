@@ -11,6 +11,8 @@ import {MatDialog} from '@angular/material/dialog';
 })
 export class PostListComponent implements OnInit {
 
+  keyword: string;
+
   constructor(private postservice: PostService,private dialog: MatDialog) { }
   delete(index: number , post: Post) {
     this.postservice.delete(index , post);
@@ -55,7 +57,9 @@ export class PostListComponent implements OnInit {
         }
 
 
-
+//  search(keyword: string){
+//    this.postservice.search(keyword);
+//  }
   }
 
 

@@ -1,24 +1,23 @@
-import { PostService } from './../../controller/service/post.service';
 import { Component, OnInit } from '@angular/core';
-import { Post } from 'src/app/controller/model/post.model';
 import { ActivatedRoute } from '@angular/router';
+import { Post } from '../controller/model/post.model';
+import { PostService } from '../controller/service/post.service';
 
 @Component({
-  selector: 'app-posts',
-  templateUrl: './posts.component.html',
-  styleUrls: ['./posts.component.css']
+  selector: 'app-article',
+  templateUrl: './article.component.html',
+  styleUrls: ['./article.component.css']
 })
-export class PostsComponent implements OnInit {
+export class ArticleComponent implements OnInit {
 
   constructor(private postService:PostService,private actRoute: ActivatedRoute) {
+    this.post.code = this.actRoute.snapshot.params.code;
 
   }
 
   ngOnInit(): void {
 
-    this.actRoute.paramMap.subscribe(params => {
-      this.post.code = params.get('code');
-    });
+
   }
   get timeline(): Array<Post> {
     if (this.postService.timeline == null) {
@@ -29,8 +28,7 @@ export class PostsComponent implements OnInit {
 
 }
 
-post:Post;
-
+post:Post=new Post();
 
 
 

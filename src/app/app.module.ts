@@ -49,6 +49,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { AdminComponent } from './admin/admin.component';
 import {AuthGuard} from './auth.guard';
 import { LogoutComponent } from './logout/logout.component';
+import {MatIconModule} from '@angular/material/icon';
+import { ArticleComponent } from './article/article.component';
 
 // the second parameter 'fr' is optional
 registerLocaleData(localeFr, 'fr');
@@ -84,7 +86,8 @@ registerLocaleData(localeFr, 'fr');
     NewsletterMessageComponent,
     AdminComponent,
     LogoutComponent,
-    PostulationMessage
+    PostulationMessage,
+    ArticleComponent
 
   ],
     imports: [
@@ -112,6 +115,7 @@ registerLocaleData(localeFr, 'fr');
       MatButtonModule,
       DialogModule,
      ButtonModule,
+     MatIconModule,
 
 
 MatTableModule
