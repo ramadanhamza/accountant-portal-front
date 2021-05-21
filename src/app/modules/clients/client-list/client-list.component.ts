@@ -42,6 +42,7 @@ export class ClientListComponent implements OnInit {
 
   ngOnInit(): void {
     this.clientService.findAll();
+    console.log(sessionStorage.getItem('login'));
   }
 
 }

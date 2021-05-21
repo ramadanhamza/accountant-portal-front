@@ -89,13 +89,13 @@ this.http.post( this.UrlBase + this.url + '/', formData).subscribe(
   const dcode = this.timeline[this.index].code;
   console.log(dcode);
   var image =this.timeline[this.index].img;
-if (image!==null)
+if (image!==null) {
   formData.append( "image", image);
+}
 
 formData.append( "content", this.timeline[this.index].content );
 formData.append( "titre", this.timeline[this.index].titre );
 
-formData.append( "date", this.timeline[this.index].date );
   this.http.put(this.UrlBase + this.url + '/code/' + dcode + '/' , formData).subscribe(data => {
       if (data > 0){
 
@@ -125,9 +125,8 @@ clone(post: Post): Post {
    const myClone = new Post();
    myClone.titre = post.titre;
    myClone.content = post.content;
-   myClone.date = post.date;
    myClone.code = post.code;
-
+   myClone.img = post.img;
 
 
    return myClone;

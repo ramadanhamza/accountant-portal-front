@@ -57,15 +57,14 @@ export class AdminService {
   }
 
   public isAdminLoggedIn() {
-    let admin = sessionStorage.getItem('nom');
+    let admin = sessionStorage.getItem('login');
     console.log(!(admin === null));
     return !(admin === null);
   }
 
   public logOut() {
     this.admin = null;
-    sessionStorage.removeItem('prenom');
-    sessionStorage.removeItem('nom');
+    sessionStorage.removeItem('login');
   }
 
   get admin(): Admin {
@@ -89,15 +88,17 @@ export class AdminService {
   set admins(value: Array<Admin>) {
     this._admins = value;
   }
-  public test = sessionStorage.getItem('login');
+
   public pass: string;
-  public test2 = JSON.parse(this.test);
+
   edit() {
-    var loginDetails = new LoginDetails();
-    loginDetails.login = this.test2;
-    loginDetails.password = this.pass;
-    console.log(this.test2);
-    this.http.put(this.urlBase + this.url + '/login/' + this.test2 + '/', loginDetails).subscribe(data => {
+    let test = sessionStorage.getItem('login');
+    let test2 = JSON.parse(test);
+    var formData: FormData = new FormData();
+    formData.append( "login", test2);
+    formData.append( "password", this.pass);
+    console.log(test2);
+    this.http.put(this.urlBase + this.url + '/login/', formData).subscribe(data => {
         if (data > 0){ }
         else {
           alert('update unsuccessful | ' + data);
