@@ -1,5 +1,6 @@
 <body>
 <app-navbar></app-navbar>
+
 <nav class="navbar">
   <input class="form-control" type="text" name="recherche" [(ngModel)]="recherche" (ngModelChange)="search()" placeholder="Rechercher ...">
 </nav>
@@ -17,8 +18,13 @@
       </div>
     </div>
   </div>
+
 </div>
 
 <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+
+
+
 
 <app-footer></app-footer>

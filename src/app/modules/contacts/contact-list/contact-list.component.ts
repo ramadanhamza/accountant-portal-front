@@ -10,9 +10,6 @@ import {Contact} from '../../../controller/model/contact.model';
 })
 export class ContactListComponent implements OnInit {
 
-  p: number = 1;
-  recherche: any;
-
   public show: boolean = false;
   public buttonName: any = 'Répondre';
 
@@ -30,27 +27,6 @@ export class ContactListComponent implements OnInit {
 
   get contacts(): Array<Contact> {
     return this.contactService.contacts;
-  }
-
-  search() {
-    if (this.recherche == "") {
-      this.ngOnInit();
-    }
-    else {
-      this.contactService.contacts = this.contactService.contacts.filter(res => {
-        return res.client.email.toLocaleLowerCase().match(this.recherche.toLocaleLowerCase())
-          || res.sujet.toLocaleLowerCase().match(this.recherche.toLocaleLowerCase())
-          || res.message.toLocaleLowerCase().match(this.recherche.toLocaleLowerCase());
-      });
-    }
-  }
-
-  key: string;
-  reverse: boolean = false;
-
-  sort(key) {
-    this.key = key;
-    this.reverse = !this.reverse;
   }
 
   constructor(private contactService: ContactService) { }

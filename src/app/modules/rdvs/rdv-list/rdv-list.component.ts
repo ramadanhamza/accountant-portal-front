@@ -12,39 +12,13 @@ import { Message } from 'src/app/controller/model/message.model';
   styleUrls: ['./rdv-list.component.scss']
 })
 export class RdvListComponent implements OnInit {
-
-  p: number = 1;
-  recherche: any;
-
   get rdvs(): Array<Rdv> {
     return this.rdvService.rdvs;
 
   }
-  public get mail(): Message {
+  public get mail() : Message {
     if (this.postservice.mail == null) { this.postservice.mail = new Message(); }
     return  this.postservice.mail;
-  }
-
-  search() {
-    if (this.recherche == "") {
-      this.ngOnInit();
-    }
-    else {
-      this.rdvService.rdvs = this.rdvService.rdvs.filter(res => {
-        return res.client.email.toLocaleLowerCase().match(this.recherche.toLocaleLowerCase())
-          || res.date.toLocaleLowerCase().match(this.recherche.toLocaleLowerCase())
-          || res.affirmation.toLocaleLowerCase().match(this.recherche.toLocaleLowerCase())
-          || res.reponse.toLocaleLowerCase().match(this.recherche.toLocaleLowerCase());
-      });
-    }
-  }
-
-  key: string;
-  reverse: boolean = false;
-
-  sort(key) {
-    this.key = key;
-    this.reverse = !this.reverse;
   }
 
   constructor(private rdvService: RdvService,private dialog: MatDialog, private postservice: PostService) { }

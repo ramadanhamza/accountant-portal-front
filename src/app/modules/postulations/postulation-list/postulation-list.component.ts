@@ -13,39 +13,18 @@ import { Message } from 'src/app/controller/model/message.model';
   styleUrls: ['./postulation-list.component.scss']
 })
 export class PostulationListComponent implements OnInit {
-
-  p: number = 1;
-  recherche: any;
-
   fileUrl;
+
+
+  public get mail() : Message {
+    if (this.postService.mail == null) { this.postService.mail = new Message(); }
+    return  this.postService.mail;
+  }
+
+
 
   get postulations(): Array<Postulation> {
     return this.postulationService.postulations;
-  }
-
-  search() {
-    if (this.recherche == "") {
-      this.ngOnInit();
-    }
-    else {
-      this.postulationService.postulations = this.postulationService.postulations.filter(res => {
-        return res.nom.toLocaleLowerCase().match(this.recherche.toLocaleLowerCase())
-          || res.prenom.toLocaleLowerCase().match(this.recherche.toLocaleLowerCase())
-          || res.email.toLocaleLowerCase().match(this.recherche.toLocaleLowerCase())
-          || res.message.toLocaleLowerCase().match(this.recherche.toLocaleLowerCase())
-          || res.cv.toLocaleLowerCase().match(this.recherche.toLocaleLowerCase())
-          || res.affirmation.toLocaleLowerCase().match(this.recherche.toLocaleLowerCase())
-          || res.reponse.toLocaleLowerCase().match(this.recherche.toLocaleLowerCase());
-      });
-    }
-  }
-
-  key: string;
-  reverse: boolean = false;
-
-  sort(key) {
-    this.key = key;
-    this.reverse = !this.reverse;
   }
 
   constructor(private postulationService: PostulationService,private sanitizer: DomSanitizer,private dialog: MatDialog,private postService:PostService) { }
@@ -81,13 +60,54 @@ export class PostulationListComponent implements OnInit {
       data: {postulation:p },
     });
 
+    dialogRef.afterOpened().subscribe(result =>{
+      this.clone(p);
+
+      });
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
     });
 
 
   }
+  clone(postulation:Postulation) {
 
+    console.log(postulation.affirmation);
+
+
+
+    this.mail.to = postulation.email;
+
+
+if(postulation.affirmation == "Refusé"){
+
+
+this.mail.subject =" Votre postulation n'est pas Acceptée";
+
+this.mail.text = "cher client  "+postulation.nom+" "+postulation.prenom+" Votre postulation n'est pas Acceptée ";
+console.log(this.mail.to);
+
+
+}
+else if(postulation.affirmation == "Accepté"){
+
+
+  this.mail.subject =" Votre postulation est  Acceptée";
+
+  this.mail.text = "Bonjour"+" "+ postulation.nom+" "+postulation.prenom+" Votre postulation est Acceptée ";
+  console.log(this.mail.to);
+
+
+  }
+else {
+
+alert("Veuillez reaffirmez le rendez-vous");
+
+
+}
+
+
+  }
 
 
 }

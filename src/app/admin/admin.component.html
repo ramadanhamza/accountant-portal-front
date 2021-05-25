@@ -1,27 +1,16 @@
-<div class="wrapper fadeInDown">
-  <div id="formContent">
-    <!-- Tabs Titles -->
-
-    <!-- Icon -->
-    <div class="fadeIn first">
-      <img src="assets/img/Logo-VCM-Final-28-03-2015-2.png" id="icon" alt="Icon" />
-      <h1>Bienvenue</h1>
+<div class="card">
+  <div class="card-header">Authentification</div>
+  <div class="card-body">
+    <div class="form-group">
+      <label>Nom de compte</label>
+      <input type="text" class="form-control" [(ngModel)]="admin.login">
     </div>
-
-    <!-- Login Form -->
-    <form (ngSubmit)="seConnecte(admin)">
-      <input type="text" id="login" class="fadeIn second form-control" name="login" placeholder="Nom de compte" [(ngModel)]="admin.login">
-      <input type="password" id="password" class="fadeIn third form-control" name="password" placeholder="Mot de passe" [(ngModel)]="admin.password">
-      <input type="submit" class="fadeIn fourth" value="Se connecter">
-    </form>
-    <div *ngIf="showMsg" class="false-ids">
-      Les identifiants sont incorrectes, veuillez réessayer.
+    <div class="form-group">
+      <label>Mot de passe</label>
+      <input type="password" class="form-control" [(ngModel)]="admin.password">
     </div>
-
-    <!-- Remind Passowrd -->
-    <div id="formFooter">
-      <a class="underlineHover" routerLink="/">Revenir au site</a>
-    </div>
-
+  </div>
+  <div class="card-footer">
+    <button class="btn btn-block btn-outline-primary" (click)="seConnecte(admin)">Se connecter</button>
   </div>
 </div>

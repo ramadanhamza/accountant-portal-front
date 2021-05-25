@@ -4,6 +4,5 @@ export class Post {
   public content: string;
   public date: string;
   public image: string;
-  public img: File;
-  public hidden: boolean;
+  public img:File
 }

@@ -49,6 +49,10 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { AdminComponent } from './admin/admin.component';
 import {AuthGuard} from './auth.guard';
 import { LogoutComponent } from './logout/logout.component';
+
+import {MatIconModule} from '@angular/material/icon';
+import { ArticleComponent } from './article/article.component';
+
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import {Ng2OrderModule} from 'ng2-order-pipe';
 import {NgxPaginationModule} from 'ngx-pagination';
@@ -57,6 +61,7 @@ import { ChangerMdpComponent } from './modules/settings/changer-mdp/changer-mdp.
 import { AddAdminComponent } from './modules/settings/add-admin/add-admin.component';
 import { AdminsComponent } from './modules/admins/admins.component';
 import { AdminListComponent } from './modules/admins/admin-list/admin-list.component';
+
 
 // the second parameter 'fr' is optional
 registerLocaleData(localeFr, 'fr');
@@ -93,11 +98,14 @@ registerLocaleData(localeFr, 'fr');
     AdminComponent,
     LogoutComponent,
     PostulationMessage,
+
+    ArticleComponent,
     PostDetailComponent,
     ChangerMdpComponent,
     AddAdminComponent,
     AdminsComponent,
     AdminListComponent
+
   ],
     imports: [
       BrowserModule,
@@ -127,6 +135,7 @@ registerLocaleData(localeFr, 'fr');
       MatButtonModule,
       DialogModule,
      ButtonModule,
+     MatIconModule,
 
 
 MatTableModule

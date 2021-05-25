@@ -2,8 +2,21 @@
   <input class="form-control" type="text" name="recherche" [(ngModel)]="recherche" (ngModelChange)="search()" placeholder="Rechercher ...">
 </nav>
 <div class="card">
+
+  <!-- <div class="d-flex justify-content-end  ">
+
+    <mat-form-field appearance="legacy" class ="search">
+      <mat-label>Recherche</mat-label>
+      <input matInput placeholder="Entrez un titre , contenu  ou bien le code d'un post" (keydown.enter)='search(keyword)' [(ngModel)]="keyword" >
+   <button matSuffix mat-button (click)="search(keyword)" >    <mat-icon  >search</mat-icon> </button>
+
+    </mat-form-field>
+
+  </div>-->
   <div class="card-header">
+
     <p>Liste des articles</p>
+
   </div>
   <div class="card-body">
     <table class="table table-striped table-bordered" *ngFor="let c of timeline | paginate: {itemsPerPage:5, currentPage:p}; index as i;">
@@ -23,8 +36,11 @@
       <tr>
         <td colspan="3">Titre :<br>{{c.titre}}</td>
       </tr>
-      <tr *ngIf="c.image != null">
+
+
+      <tr *ngIf ="c.image !== null">
         <td colspan="3"><img src="{{c.image}}" alt="no Image" width="400px"></td>
+
       </tr>
       </tbody>
     </table>

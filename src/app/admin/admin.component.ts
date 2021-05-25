@@ -10,8 +10,6 @@ import {Router} from '@angular/router';
 })
 export class AdminComponent implements OnInit {
 
-  showMsg = false;
-
   get admins(): Array<Admin> {
     return this.adminService.admins;
   }
@@ -33,14 +31,12 @@ export class AdminComponent implements OnInit {
       data => {
         if (data != null) {
           this.adminService._admin = data;
-          sessionStorage.setItem('login', JSON.stringify(data.login));
-          sessionStorage.setItem('password', JSON.stringify(data.password));
-          sessionStorage.setItem('nom', JSON.stringify(data.nom));
-          sessionStorage.setItem('prenom', JSON.stringify(data.prenom));
+          sessionStorage.setItem('nom', data.nom);
+          sessionStorage.setItem('prenom', data.prenom);
           this.router.navigate(['admin/dashboard']);
         }
       }, error => {
-        this.showMsg = true;
+        console.log(error);
       }
     );
   }
