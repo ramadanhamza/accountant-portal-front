@@ -26,7 +26,7 @@
                       <li>Le prénom doit contenir au moins 2 caractères.</li>
                     </div>
                     <div *ngIf="prenom.errors.pattern">
-                      <li>Le prénom ne peut pas contenir de chiffres.</li>
+                      <li>Le prénom ne peut pas contenir de chiffres ou de caractères spéciaux.</li>
                     </div>
                   </div>
                 </div>
@@ -45,7 +45,7 @@
                       <li>Le nom doit ne doit pas contenir plus de 30 caractères.</li>
                     </div>
                     <div *ngIf="nom.errors.pattern">
-                      <li>Le nom ne peut pas contenir de chiffres.</li>
+                      <li>Le nom ne peut pas contenir de chiffres ou de caractères spéciaux.</li>
                     </div>
                   </div>
                 </div>

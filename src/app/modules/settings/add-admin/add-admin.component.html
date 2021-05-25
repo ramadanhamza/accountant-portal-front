@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-12" *ngIf="this.adminService.showForm">
+    <form (ngSubmit)="save()" #myForm="ngForm">
+      <div class="row">
+        <div class="col-md-12 form-group">
+          <input type="text" class="form-control" name="nom" id="nom" required placeholder="Nom de l'administrateur" [(ngModel)]="admin.nom">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 form-group">
+          <input type="text" class="form-control" name="prenom" id="prenom" required placeholder="Prénom de l'administrateur" [(ngModel)]="admin.prenom">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 form-group">
+          <input type="text" class="form-control" name="login" id="login" required placeholder="Nom de compte" [(ngModel)]="admin.login">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 form-group">
+          <input type="text" class="form-control" name="password" id="password" required placeholder="Mot de passe" [(ngModel)]="admin.password">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <input type="submit" value="Créer" class="btn btn-outline-primary" [disabled]="!myForm.form.valid">
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-12" *ngIf="this.adminService.showMsg">
+    <div class="row">
+      <p style="color: green; font-size: 23px; text-align: center"><i class="fa fa-check"></i> Votre compte a été créé avec succès.</p>
+    </div>
+  </div>
+</div>

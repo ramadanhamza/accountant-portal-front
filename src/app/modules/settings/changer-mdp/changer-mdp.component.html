@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-12">
+    <form (ngSubmit)="edit()" #myForm="ngForm">
+      <div class="row">
+        <div class="col-md-12 form-group">
+          <input type="text" class="form-control" name="mdp" id="mdp" required placeholder="Votre nouveau mot de passe" [(ngModel)]="this.adminService.pass">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <input type="submit" value="Valider" class="btn btn-outline-primary" [disabled]="!myForm.form.valid">
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<br>
+<div class="row" *ngIf="this.adminService.mdpChange">
+  <div class="col-12">
+    <div class="row">
+      <p style="color: green; font-size: 23px; text-align: center"><i class="fa fa-check"></i> Votre mot de passe a été mis à jour avec succès.</p>
+    </div>
+  </div>
+</div>
