@@ -23,7 +23,7 @@
       <tr>
         <td colspan="3">Titre :<br>{{c.titre}}</td>
       </tr>
-      <tr>
+      <tr *ngIf="c.image != null">
         <td colspan="3"><img src="{{c.image}}" alt="no Image" width="400px"></td>
       </tr>
       </tbody>

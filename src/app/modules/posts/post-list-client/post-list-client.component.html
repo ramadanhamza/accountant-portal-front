@@ -7,7 +7,7 @@
   <div class="card-body" *ngFor="let t of timeline | orderBy: 'date': true | paginate: {itemsPerPage:5, currentPage:p}; index as i;" [hidden]="t.hidden">
     <div class="row">
       <div class="img-wrapper col-md-4 col-sm-6">
-        <img src="{{t.image}}">
+        <img *ngIf="t.image != null" src="{{t.image}}">
       </div>
       <div class="col-md-8 col-sm-6">
         <div class="row" class="title">{{t.titre}}</div>

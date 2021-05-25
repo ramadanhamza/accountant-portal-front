@@ -5,12 +5,12 @@
     <div class="row justify-content-center">
       <div class="col-md-10">
         <div class="row justify-content-center">
-          <div class="col-md-6">
+          <div class="col-md-6 fadeInDown first">
             <h3 class="heading mb-4">Rejoignez nous</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas debitis, fugit natus?</p>
             <p><img src="../../../../assets/img/join.jpg" alt="Image" class="img-fluid"></p>
           </div>
-          <div class="col-md-6" *ngIf="this.postulationService.showForm">
+          <div class="col-md-6 fadeInRight second" *ngIf="this.postulationService.showForm">
             <form (ngSubmit)="save()" #myForm="ngForm">
               <div class="row">
                 <div class="col-md-12 form-group">
