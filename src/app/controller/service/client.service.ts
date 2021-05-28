@@ -9,6 +9,8 @@ export class ClientService {
 
   private urlBase = 'http://localhost:8090';
   private url = '/stock/client/';
+  private  urlProd='http://visionconsultingmanagement.com';
+
 
   private _client: Client;
   private _clients: Array<Client>;
@@ -16,7 +18,7 @@ export class ClientService {
   constructor(private http: HttpClient) { }
 
   public findAll() {
-    this.http.get<Array<Client>>(this.urlBase + this.url).subscribe(
+    this.http.get<Array<Client>>(this.urlProd + this.url).subscribe(
       data => {
         this.clients = data;
       }, error => {

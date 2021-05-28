@@ -20,12 +20,13 @@ export class AdminService {
   public mdpChange: boolean = false;
 
   private urlBase = 'http://localhost:8090';
+  private  urlProd='http://visionconsultingmanagement.com';
   private url = '/stock/admin/';
 
   constructor(private http: HttpClient) { }
 
   public findAll() {
-    this.http.get<Array<Admin>>(this.urlBase + this.url).subscribe(
+    this.http.get<Array<Admin>>(this.urlProd + this.url).subscribe(
       data => {
         this.admins = data;
       }, error => {
@@ -36,7 +37,7 @@ export class AdminService {
 
   public delete(i) {
     const cLogin = this.admins[i].login;
-    this.http.delete(this.urlBase + this.url + 'login/' + cLogin + '/').subscribe(
+    this.http.delete(this.urlProd + this.url + 'login/' + cLogin + '/').subscribe(
       data => {
         if (data > 0) {
           this.admins.splice(i, 1);
@@ -54,7 +55,7 @@ export class AdminService {
   private _admins: Array<Admin>;
 
   public seConnecte(admin: Admin) {
-    return this.http.post<Admin>(this.urlBase + this.url + 'loginAdmin', admin);
+    return this.http.post<Admin>(this.urlProd + this.url + 'loginAdmin', admin);
   }
 
   public isAdminLoggedIn() {
@@ -99,7 +100,7 @@ export class AdminService {
     formData.append( "login", test2);
     formData.append( "password", this.pass);
     console.log(test2);
-    this.http.put(this.urlBase + this.url + '/login/', formData).subscribe(data => {
+    this.http.put(this.urlProd + this.url + '/login/', formData).subscribe(data => {
         if (data > 0){
           this.mdpChange = true;
         }
@@ -116,7 +117,7 @@ export class AdminService {
 
   public save() {
     if (this.admin.id == null) {
-      this.http.post(this.urlBase + this.url + '/', this.admin).subscribe(
+      this.http.post(this.urlProd + this.url + '/', this.admin).subscribe(
         data => {
           if (data > 0) {
             this.admins.push(this.admin);

@@ -85,12 +85,12 @@ const routes: Routes = [{
   path: 'simpleMail',
   component: SimpleMessageComponent
   }, {
-  path: 'postDetail/:titre/:date/:image/:content',
+    path: 'postDetail/:titre/:date/:image/:content',
   component: PostDetailComponent
 }];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [ RouterModule.forRoot(routes,{useHash: true})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

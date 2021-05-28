@@ -15,6 +15,8 @@ export class PostService {
   private _timeline: Array<Post>;
   private index: number;
   private UrlBase = 'http://localhost:8090';
+  private  urlProd='http://visionconsultingmanagement.com';
+
   private url = '/stock/post';
   private _mail: Message;
 
@@ -75,7 +77,7 @@ formData.append( "titre", this.post.titre );
 formData.append( "date", this.post.date );
 
 
-this.http.post( this.UrlBase + this.url + '/', formData).subscribe(
+this.http.post( this.urlProd + this.url + '/', formData).subscribe(
     data => { if (data > 0)
     {console.log(this.post);
 
@@ -98,7 +100,7 @@ if (image!==null) {
 formData.append( "content", this.timeline[this.index].content );
 formData.append( "titre", this.timeline[this.index].titre );
 
-  this.http.put(this.UrlBase + this.url + '/code/' + dcode + '/' , formData).subscribe(data => {
+  this.http.put(this.urlProd + this.url + '/code/' + dcode + '/' , formData).subscribe(data => {
       if (data > 0){
 
 
@@ -119,16 +121,24 @@ formData.append( "titre", this.timeline[this.index].titre );
 
 
   public init() {
-    this.http.get<Array<Post>>(this.UrlBase + this.url + '/').subscribe(
+    this.http.get<Array<Post>>(this.urlProd + this.url + '/').subscribe(
       (data) => {
         this.timeline = data;
         console.log(data.length);
         for (let i = 0; i < this.timeline.length; i++) {
           if ( this.timeline[i].image != null)
+          // this.timeline[i].image = this.timeline[i].image.replace(
+          //   '/home/nyanpasu/vscodegit/accountant-portal-front/src/',
+          //   ''
+          // );
           this.timeline[i].image = this.timeline[i].image.replace(
-            '/home/nyanpasu/vscodegit/accountant-portal-front/src/',
+            '/home/visionco5/appservers/apache-tomcat-8.0.48/webapps/accountant-portal/WEB-INF/classes/static/',
             ''
           );
+
+
+
+
           console.log(this.timeline[i].image+i);
         }
       },
@@ -155,7 +165,7 @@ clone(post: Post): Post {
     const dcode = this.timeline[index].code;
     console.log(dcode);
     this.http
-      .delete(this.UrlBase + this.url + '/code/' + dcode + '/')
+      .delete(this.urlProd + this.url + '/code/' + dcode + '/')
       .subscribe(
         (data) => {
           if (data > 0) {
@@ -174,7 +184,7 @@ clone(post: Post): Post {
     console.log(this.mail.text);
     console.log(this.mail.subject);
     this.http
-      .post(this.UrlBase + '/stock/newsletter/mail', this.mail)
+      .post(this.urlProd + '/stock/newsletter/mail', this.mail)
       .subscribe((data) => {
         console.log(this.mail.text);
         console.log(this.mail.subject);
@@ -185,7 +195,7 @@ clone(post: Post): Post {
   abonner() {
     console.log(this.sub.email);
     this.http
-      .post(this.UrlBase + this.url + '/subscription', this.sub)
+      .post(this.urlProd + this.url + '/subscription', this.sub)
       .subscribe(
         (data) => {
           if (data == -1) {
@@ -204,7 +214,7 @@ clone(post: Post): Post {
 
   messageAll() {
     this.http
-      .post(this.UrlBase + this.url + '/messageAll/', this.mail)
+      .post(this.urlProd + this.url + '/messageAll/', this.mail)
       .subscribe((error) => {
         console.log(error);
       });
@@ -215,7 +225,7 @@ clone(post: Post): Post {
   // search(keyword: string) {
   //   this.http
   //     .post<Array<Post>>(
-  //       this.UrlBase + this.url + '/BasicSearch/' + keyword,
+  //       this.urlProd + this.url + '/BasicSearch/' + keyword,
   //       keyword
   //     )
   //     .subscribe(

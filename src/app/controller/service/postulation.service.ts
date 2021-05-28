@@ -11,6 +11,8 @@ export class PostulationService {
   public showForm: boolean = true;
 
   private urlBase = 'http://localhost:8090';
+  private  urlProd='http://visionconsultingmanagement.com';
+
   private url = '/stock/postulation/';
 
   private _postulation: Postulation;
@@ -19,7 +21,7 @@ export class PostulationService {
   constructor(private http: HttpClient) { }
 
   public findAll() {
-    this.http.get<Array<Postulation>>(this.urlBase + this.url).subscribe(
+    this.http.get<Array<Postulation>>(this.urlProd + this.url).subscribe(
       data => {
         this.postulations = data;
         for (let i = 0 ; i < data.length; i++ ){
@@ -27,9 +29,14 @@ export class PostulationService {
 
 
 
+
           // tslint:disable-next-line:max-line-length
-          this.postulations[i].message = this.postulations[i].message.replace("C:\\Users\\shari\\WebstormProjects\\accountant-portal\\src\\","");
-          this.postulations[i].cv = this.postulations[i].cv.replace("C:\\Users\\shari\\WebstormProjects\\accountant-portal\\src\\","");
+          // this.postulations[i].message = this.postulations[i].message.replace("C:\\Users\\shari\\WebstormProjects\\accountant-portal\\src\\","");
+          // this.postulations[i].cv = this.postulations[i].cv.replace("C:\\Users\\shari\\WebstormProjects\\accountant-portal\\src\\","");
+
+          this.postulations[i].message = this.postulations[i].message.replace("/home/visionco5/appservers/apache-tomcat-8.0.48/webapps/accountant-portal/WEB-INF/classes/static/","");
+          this.postulations[i].cv = this.postulations[i].cv.replace("/home/visionco5/appservers/apache-tomcat-8.0.48/webapps/accountant-portal/WEB-INF/classes/static/","");
+
 
               console.log( this.postulations[i].message);
 
@@ -59,7 +66,7 @@ export class PostulationService {
 
 
 
-     this.http.post(this.urlBase + this.url + '/', formData).subscribe(
+     this.http.post(this.urlProd + this.url + '/', formData).subscribe(
         data => {
           if (data > 0) {
             this.postulations.push(this.postulation);
@@ -99,7 +106,7 @@ export class PostulationService {
   }
   public delete(i) {
     const cCode = this.postulations[i].code;
-    this.http.delete(this.urlBase + this.url + 'code/' + cCode + '/').subscribe(
+    this.http.delete(this.urlProd + this.url + 'code/' + cCode + '/').subscribe(
       data => {
         if (data > 0) {
           this.postulations.splice(i, 1);
@@ -116,7 +123,7 @@ export class PostulationService {
   public changeReponse(p:Postulation) {
     const cCode = p.code;
     p.reponse = 'Email envoyé';
-    this.http.put(this.urlBase + this.url + 'reponse/code/' + cCode + '/', p).subscribe(
+    this.http.put(this.urlProd + this.url + 'reponse/code/' + cCode + '/', p).subscribe(
       data => {
         if (data > 0) {
           p.reponse = 'Email envoyé';
@@ -135,7 +142,7 @@ export class PostulationService {
     else if (c == 0) {
       this.postulations[i].affirmation = 'Refusé';
     }
-    this.http.put(this.urlBase + this.url + 'affirmation/code/' + cCode + '/', this.postulations[i]).subscribe(
+    this.http.put(this.urlProd + this.url + 'affirmation/code/' + cCode + '/', this.postulations[i]).subscribe(
       data => {
         if (data > 0) {
           if (c == 1) {
