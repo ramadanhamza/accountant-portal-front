@@ -14,7 +14,7 @@ export class PostService {
   private _post: Post;
   private _timeline: Array<Post>;
   private index: number;
-  private UrlBase = 'http://localhost:8090';
+  // private UrlBase = 'http://localhost:8090';
   private  urlProd='http://visionconsultingmanagement.com';
 
   private url = '/stock/post';
@@ -132,7 +132,7 @@ formData.append( "titre", this.timeline[this.index].titre );
           //   ''
           // );
           this.timeline[i].image = this.timeline[i].image.replace(
-            '/home/visionco5/appservers/apache-tomcat-8.0.48/webapps/accountant-portal/WEB-INF/classes/static/',
+            '/home/visionco5/appservers/apache-tomcat-8.0.48/webapps/ROOT/WEB-INF/classes/static/',
             ''
           );
 

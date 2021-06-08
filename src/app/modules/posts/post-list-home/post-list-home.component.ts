@@ -10,7 +10,7 @@ import { Post } from 'src/app/controller/model/post.model';
 export class PostListHomeComponent implements OnInit {
 
   constructor(private postservice: PostService) { }
-  // tslint:disable-next-line:typedef
+
 
   public get timeline(): Array<Post> {
     if (this.postservice.timeline == null) {

@@ -2,7 +2,7 @@
 <section class="showcase">
   <div class="container-fluid p-0">
     <div class="row no-gutters">
-      <div *ngIf="timeline[0].image != null" class="img-wrapper col-lg-6 order-lg-2 text-white"><img src="{{timeline[0].image}}"></div>
+      <div  class="img-wrapper col-lg-6 order-lg-2 text-white"><img *ngIf="timeline[0].image != null" src="{{timeline[0].image}}"></div>
       <div class="col-lg-6 order-lg-1">
         <h2>{{timeline[0].titre}}</h2>
         <p [innerHTML]="timeline[0].content.slice(0,500)" class="lead mb-0"></p>
@@ -11,7 +11,7 @@
       </div>
     </div>
     <div class="row no-gutters">
-      <div *ngIf="timeline[1].image != null" class="img-wrapper col-lg-6 text-white"><img src="{{timeline[1].image}}"></div>
+      <div class="img-wrapper col-lg-6 text-white"><img  *ngIf="timeline[1].image != null"  src="{{timeline[1].image}}"></div>
       <div class="col-lg-6">
         <h2>{{timeline[1].titre}}</h2>
         <p [innerHTML]="timeline[1].content.slice(0,500)" class="lead mb-0"></p>
@@ -20,7 +20,7 @@
       </div>
     </div>
     <div class="row no-gutters">
-      <div *ngIf="timeline[2].image != null" class="img-wrapper col-lg-6 order-lg-2 text-white"><img src="{{timeline[2].image}}"></div>
+      <div  class="img-wrapper col-lg-6 order-lg-2 text-white"><img *ngIf="timeline[2].image != null" src="{{timeline[2].image}}"></div>
       <div class="col-lg-6 order-lg-1">
         <h2>{{timeline[2].titre}}</h2>
         <p [innerHTML]="timeline[2].content.slice(0,500)" class="lead mb-0"></p>

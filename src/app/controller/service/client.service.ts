@@ -7,7 +7,7 @@ import {HttpClient} from '@angular/common/http';
 })
 export class ClientService {
 
-  private urlBase = 'http://localhost:8090';
+  // private urlBase = 'http://localhost:8090';
   private url = '/stock/client/';
   private  urlProd='http://visionconsultingmanagement.com';
 

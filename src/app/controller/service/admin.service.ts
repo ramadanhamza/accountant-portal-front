@@ -19,7 +19,7 @@ export class AdminService {
   public showForm: boolean = true;
   public mdpChange: boolean = false;
 
-  private urlBase = 'http://localhost:8090';
+  // private urlBase = 'http://localhost:8090';
   private  urlProd='http://visionconsultingmanagement.com';
   private url = '/stock/admin/';
 

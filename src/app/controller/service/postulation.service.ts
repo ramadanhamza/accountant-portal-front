@@ -10,7 +10,7 @@ export class PostulationService {
   public showMsg: boolean = false;
   public showForm: boolean = true;
 
-  private urlBase = 'http://localhost:8090';
+  // private urlBase = 'http://localhost:8090';
   private  urlProd='http://visionconsultingmanagement.com';
 
   private url = '/stock/postulation/';
@@ -34,8 +34,8 @@ export class PostulationService {
           // this.postulations[i].message = this.postulations[i].message.replace("C:\\Users\\shari\\WebstormProjects\\accountant-portal\\src\\","");
           // this.postulations[i].cv = this.postulations[i].cv.replace("C:\\Users\\shari\\WebstormProjects\\accountant-portal\\src\\","");
 
-          this.postulations[i].message = this.postulations[i].message.replace("/home/visionco5/appservers/apache-tomcat-8.0.48/webapps/accountant-portal/WEB-INF/classes/static/","");
-          this.postulations[i].cv = this.postulations[i].cv.replace("/home/visionco5/appservers/apache-tomcat-8.0.48/webapps/accountant-portal/WEB-INF/classes/static/","");
+          this.postulations[i].message = this.postulations[i].message.replace("/home/visionco5/appservers/apache-tomcat-8.0.48/webapps/ROOT/WEB-INF/classes/static/","");
+          this.postulations[i].cv = this.postulations[i].cv.replace("/home/visionco5/appservers/apache-tomcat-8.0.48/webapps/ROOT/WEB-INF/classes/static/","");
 
 
               console.log( this.postulations[i].message);

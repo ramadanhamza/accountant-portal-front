@@ -10,7 +10,7 @@ export class RdvService {
   public showForm: boolean = true;
   public showMsg: boolean = false;
 
-  private urlBase = 'http://localhost:8090';
+  // private urlBase = 'http://localhost:8090';
   private  urlProd='http://visionconsultingmanagement.com';
 
   private url = '/stock/rdv/';
