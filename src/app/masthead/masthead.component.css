@@ -3,5 +3,18 @@
 }
 
 .picsum-img-wrapper {
-  max-height: 600px;
+  max-height: 700px;
+}
+
+.carousel-caption {
+  position: relative;
+  left: 0;
+}
+
+.carousel-caption h3 {
+  font-size: 2em;
+}
+
+.carousel-caption p {
+  font-size: 1em;
 }

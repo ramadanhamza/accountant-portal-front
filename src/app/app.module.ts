@@ -57,11 +57,10 @@ import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import {Ng2OrderModule} from 'ng2-order-pipe';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { PostDetailComponent } from './post-detail/post-detail.component';
-import { ChangerMdpComponent } from './modules/settings/changer-mdp/changer-mdp.component';
-import { AddAdminComponent } from './modules/settings/add-admin/add-admin.component';
-import { AdminsComponent } from './modules/admins/admins.component';
-import { AdminListComponent } from './modules/admins/admin-list/admin-list.component';
-
+import {ChangerMdpComponent} from './modules/settings/changer-mdp/changer-mdp.component';
+import {AddAdminComponent} from './modules/settings/add-admin/add-admin.component';
+import {AdminsComponent} from './modules/admins/admins.component';
+import {AdminListComponent} from './modules/admins/admin-list/admin-list.component';
 
 // the second parameter 'fr' is optional
 registerLocaleData(localeFr, 'fr');
