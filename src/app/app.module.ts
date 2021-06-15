@@ -11,7 +11,7 @@ import { ClientListComponent } from './modules/clients/client-list/client-list.c
 import {HttpClientModule} from '@angular/common/http';
 import { RdvsComponent } from './modules/rdvs/rdvs.component';
 import { RdvListComponent, ResponseMessage } from './modules/rdvs/rdv-list/rdv-list.component';
-import { ContactListComponent } from './modules/contacts/contact-list/contact-list.component';
+import { ContactListComponent, ContactMessage } from './modules/contacts/contact-list/contact-list.component';
 import { ContactsComponent } from './modules/contacts/contacts.component';
 import {FormsModule} from '@angular/forms';
 import { PostulationListComponent , PostulationMessage} from './modules/postulations/postulation-list/postulation-list.component';
@@ -103,7 +103,10 @@ registerLocaleData(localeFr, 'fr');
     ChangerMdpComponent,
     AddAdminComponent,
     AdminsComponent,
-    AdminListComponent
+    AdminListComponent,
+    ContactMessage
+
+
 
   ],
     imports: [

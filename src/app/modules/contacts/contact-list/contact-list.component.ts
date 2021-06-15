@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import {Rdv} from '../../../controller/model/rdv.model';
+import { Component, Inject, OnInit } from '@angular/core';
 import {ContactService} from '../../../controller/service/contact.service';
 import {Contact} from '../../../controller/model/contact.model';
+import { Message } from 'src/app/controller/model/message.model';
+import { PostService } from 'src/app/controller/service/post.service';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-contact-list',
@@ -15,6 +17,10 @@ export class ContactListComponent implements OnInit {
 
   public show: boolean = false;
   public buttonName: any = 'Répondre';
+  public get mail(): Message {
+    if (this.postservice.mail == null) { this.postservice.mail = new Message(); }
+    return  this.postservice.mail;
+  }
 
   toggle() {
     this.show = !this.show;
@@ -53,7 +59,7 @@ export class ContactListComponent implements OnInit {
     this.reverse = !this.reverse;
   }
 
-  constructor(private contactService: ContactService) { }
+  constructor(private contactService: ContactService,private postservice : PostService,private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.contactService.findAll();
@@ -67,5 +73,73 @@ export class ContactListComponent implements OnInit {
     element.textContent = text;
     element.disabled = true;
   }
+  openDialog(c:Contact): void {
+    const dialogRef = this.dialog.open(ContactMessage, {
 
-}
+      width: '70%',
+      height:'70%',
+      data:{ c :c }
+    });
+
+
+
+
+dialogRef.afterOpened().subscribe(result =>{
+this.clone(c);
+
+});
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
+  clone(c:Contact) {
+
+
+
+    this.mail.to = c.client.email;
+
+
+
+
+
+
+
+  }
+
+
+
+  }
+  @Component({
+    selector: 'response-message',
+    templateUrl: './response.html',
+  })
+  export class ContactMessage implements OnInit  {
+  c:Contact;
+    constructor(
+      public dialogRef: MatDialogRef<ContactMessage>,
+      @Inject(MAT_DIALOG_DATA) public data: any,private postservice: PostService) { }
+
+    onNoClick(): void {
+      this.dialogRef.close();
+    }
+
+
+    public get mail() : Message {
+      if (this.postservice.mail == null) { this.postservice.mail = new Message(); }
+      return  this.postservice.mail;
+    }
+
+    ngOnInit(): void {
+  }
+    send(c:Contact){
+
+      this.postservice.send();
+
+
+      }
+
+    }
+
+
