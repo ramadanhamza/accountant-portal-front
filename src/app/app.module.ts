@@ -109,40 +109,40 @@ registerLocaleData(localeFr, 'fr');
     AboutComponent,
     MetiersComponent
   ],
-    imports: [
-      BrowserModule,
-      AppRoutingModule,
-      BrowserAnimationsModule,
-      DefaultModule,
-      HttpClientModule,
-      FormsModule,
-      AgmCoreModule,
-      BrowserModule,
-      MatCardModule,
-      MatDividerModule,
-      MatFormFieldModule,
-      MatToolbarModule,
-      EditorModule,
-      Ng2SearchPipeModule,
-      Ng2OrderModule,
-      NgxPaginationModule,
-      AgmCoreModule.forRoot({
-        apiKey: 'AIzaSyC4iUno5RgmQkuIOC0jP1DSLNIi_O4gX7Y'
-      }),
-      NgbModule,
-      MatButtonModule,
-      MatDialogModule,
-      MatInputModule,
-      MatDividerModule,
-      MatButtonModule,
-      DialogModule,
-     ButtonModule,
-     MatIconModule,
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    DefaultModule,
+    HttpClientModule,
+    FormsModule,
+    AgmCoreModule,
+    BrowserModule,
+    MatCardModule,
+    MatDividerModule,
+    MatFormFieldModule,
+    MatToolbarModule,
+    EditorModule,
+    Ng2SearchPipeModule,
+    Ng2OrderModule,
+    NgxPaginationModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyC4iUno5RgmQkuIOC0jP1DSLNIi_O4gX7Y'
+    }),
+    NgbModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatInputModule,
+    MatDividerModule,
+    MatButtonModule,
+    DialogModule,
+    ButtonModule,
+    MatIconModule,
 
 
-MatTableModule
+    MatTableModule
 
-    ],
+  ],
   providers: [{provide: LOCALE_ID, useValue: 'fr' }, AuthGuard],
   bootstrap: [AppComponent]
 })
