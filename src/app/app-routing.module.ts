@@ -21,6 +21,8 @@ import {PostDetailComponent} from './post-detail/post-detail.component';
 import {ChangerMdpComponent} from './modules/settings/changer-mdp/changer-mdp.component';
 import {AddAdminComponent} from './modules/settings/add-admin/add-admin.component';
 import {AdminListComponent} from './modules/admins/admin-list/admin-list.component';
+import {AboutComponent} from './about/about.component';
+import {MetiersComponent} from './metiers/metiers.component';
 
 const routes: Routes = [{
   path: 'admin',
@@ -63,6 +65,12 @@ const routes: Routes = [{
   }, {
     path: '',
     component: MainComponent
+  }, {
+    path: 'about',
+    component: AboutComponent
+  }, {
+    path: 'metiers',
+    component: MetiersComponent
   }, {
     path: 'contact',
     component: ContactCreateComponent

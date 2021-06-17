@@ -61,6 +61,8 @@ import {ChangerMdpComponent} from './modules/settings/changer-mdp/changer-mdp.co
 import {AddAdminComponent} from './modules/settings/add-admin/add-admin.component';
 import {AdminsComponent} from './modules/admins/admins.component';
 import {AdminListComponent} from './modules/admins/admin-list/admin-list.component';
+import { AboutComponent } from './about/about.component';
+import { MetiersComponent } from './metiers/metiers.component';
 
 // the second parameter 'fr' is optional
 registerLocaleData(localeFr, 'fr');
@@ -97,17 +99,15 @@ registerLocaleData(localeFr, 'fr');
     AdminComponent,
     LogoutComponent,
     PostulationMessage,
-
     ArticleComponent,
     PostDetailComponent,
     ChangerMdpComponent,
     AddAdminComponent,
     AdminsComponent,
     AdminListComponent,
-    ContactMessage
-
-
-
+    ContactMessage,
+    AboutComponent,
+    MetiersComponent
   ],
     imports: [
       BrowserModule,
