@@ -34,16 +34,27 @@
         <a class="nav-link" mat-list-item routerLinkActive="list-item-active" routerLink="/about">Qui sommes-nous ?</a>
       </li>
       <li class="nav-down-item">
+        <a class="nav-link" mat-list-item routerLinkActive="list-item-active" routerLink="/metiers">nos métiers</a>
+      </li>
+      <li class="nav-down-item">
         <a class="nav-link" mat-list-item routerLinkActive="list-item-active" routerLink="/rdv">Prendre un rendez-vous</a>
       </li>
       <li class="nav-down-item">
         <a class="nav-link" mat-list-item routerLinkActive="list-item-active" routerLink="/join">Nous rejoindre</a>
       </li>
-      <li class="nav-down-item">
-        <a class="nav-link" mat-list-item routerLinkActive="list-item-active" routerLink="/contact">Contact</a>
+      <li class="nav-down-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Boite à outils
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Liens utiles</a>
+        </div>
       </li>
       <li class="nav-down-item">
-        <a class="nav-link" mat-list-item routerLinkActive="list-item-active" routerLink="/postListClient">Articles</a>
+        <a class="nav-link" mat-list-item routerLinkActive="list-item-active" routerLink="/postListClient">Blog</a>
+      </li>
+      <li class="nav-down-item">
+        <a class="nav-link" mat-list-item routerLinkActive="list-item-active" routerLink="/contact">Contact</a>
       </li>
     </ul>
   </div>
