@@ -1,6 +1,6 @@
 import { NewsletterMessageComponent } from './modules/simple-message/newsletter-message/newsletter-message.component';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { ExtraOptions, RouterModule, Routes } from '@angular/router';
 import {DefaultComponent} from './layouts/default/default.component';
 import {ClientsComponent} from './modules/clients/clients.component';
 import {MainComponent} from './main/main.component';
@@ -96,10 +96,15 @@ const routes: Routes = [{
     path: 'postDetail/:titre/:date/:image/:content',
   component: PostDetailComponent
 }];
-
+const routerOptions: ExtraOptions = {
+  useHash: true,
+  anchorScrolling: 'enabled',
+  scrollPositionRestoration:  'enabled',
+  // ...any other options you'd like to use
+};
 @NgModule({
-  imports: [ RouterModule.forRoot(routes,{useHash: true}),
-             RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'})],
+  imports: [ RouterModule.forRoot(routes,routerOptions),
+            ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
