@@ -80,6 +80,7 @@ formData.append( "date", this.post.date );
 this.http.post( this.urlProd + this.url + '/', formData).subscribe(
     data => { if (data > 0)
     {console.log(this.post);
+      alert(' le poste est sauvgardé')
 
     }else {alert('Une erreur s\'est reproduite, veuillez réessayer'); }},
     error => {
@@ -93,7 +94,7 @@ this.http.post( this.urlProd + this.url + '/', formData).subscribe(
   const dcode = this.timeline[this.index].code;
   console.log(dcode);
   var image =this.timeline[this.index].img;
-if (image!==null) {
+if (image!=null) {
   formData.append( "image", image);
 }
 
@@ -102,9 +103,10 @@ formData.append( "titre", this.timeline[this.index].titre );
 
   this.http.put(this.urlProd + this.url + '/code/' + dcode + '/' , formData).subscribe(data => {
       if (data > 0){
-
-
+        alert(' The update is successful');
       }
+
+
       else { alert('update unsuccessful');
       }
 

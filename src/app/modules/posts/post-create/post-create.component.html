@@ -17,8 +17,9 @@
         <input type="text" class="form-control" name="titre" id="titre" placeholder="Titre de l'article" [(ngModel)]="post.titre">
       </div>
       <div class="col-md-12 form-group">
-        <input type="file" class="form-control" name="cv-file" id="cv-file" (change)="onCileChange($event)">
+        <input type="file" class="form-control" name="cv-file" id="cv-file" accept="image/*" (change)="onCileChange($event)">
         <label for="cv-file">Image</label>
+
       </div>
     </div>
       <p-editor [(ngModel)]="post.content" [style]="{'height':'320px'}"></p-editor>

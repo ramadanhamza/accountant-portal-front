@@ -65,13 +65,13 @@
               </div>
               <div class="row">
                 <div class="col-md-12 form-group">
-                  <input type="file" class="form-control" name="cv-file" id="cv-file" required (change)="onCileChange($event)">
+                  <input type="file" class="form-control" name="cv-file" id="cv-file" accept="application/pdf" required (change)="onCileChange($event)">
                   <label for="cv-file">{{cvFileName}}</label>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-12 form-group">
-                  <input type="file" class="form-control" name="message-file" id="message-file" (change)="onMileChange($event)">
+                  <input type="file" class="form-control" name="message-file" id="message-file"  (change)="onMileChange($event)">
                   <label for="message-file">{{messageFileName}}</label>
                  </div>
               </div>
