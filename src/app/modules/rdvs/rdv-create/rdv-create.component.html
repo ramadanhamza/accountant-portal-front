@@ -7,7 +7,7 @@
         <div class="row justify-content-center">
           <div class="col-md-6 fadeInDown first">
             <h3 class="heading mb-4">Prenez un rendez-vous</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas debitis, fugit natus?</p>
+            <p>Envie de prendre un rendez-vous ? Remplissez le formulaire. Un réponse vous sera transmise par email au plus tôt.</p>
             <p><img src="../../../../assets/img/rendez-vous.png" alt="Image" class="img-fluid"></p>
           </div>
           <div class="col-md-6 fadeInRight second" *ngIf="this.rdvService.showForm">
@@ -81,6 +81,7 @@
               </div>
               <div class="row">
                 <div class="col-md-12 form-group">
+                  <p style="color: red;"><i class="fa fa-warning"></i> Veuillez choisir un horaire convenable (8H30-16H30)</p>
                   <input type="datetime-local" class="form-control" name="date" id="date" required #date="ngModel" [(ngModel)]="rdv.date">
                   <div *ngIf="tel.invalid && (tel.dirty || tel.touched)" class="alert alert-danger">
                     <div *ngIf="tel.errors.required">

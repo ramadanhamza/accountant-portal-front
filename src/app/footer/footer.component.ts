@@ -9,12 +9,14 @@ import { PostService } from '../controller/service/post.service';
 })
 export class FooterComponent implements OnInit {
 
+  year: number = new Date().getFullYear();
+
   public get sub() : Subscription {
     return this.postService.sub;
   }
 
 
-    constructor(private postService:PostService) { }
+    constructor(private postService: PostService) { }
 
     ngOnInit(): void {
     }

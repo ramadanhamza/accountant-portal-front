@@ -2,6 +2,13 @@
   width: 100%;
 }
 
+h1 {
+  text-align: center;
+  padding: 15px;
+  font-size: 2.5rem;
+  font-weight: 900;
+}
+
 h2 {
   color: rgb(16, 153, 72);
   padding: 15px;
