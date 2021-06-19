@@ -14,13 +14,8 @@ import { Message } from 'src/app/controller/model/message.model';
 })
 export class PostulationListComponent implements OnInit {
 
-  p: number = 1;
-  recherche: any;
 
-  fileUrl;
-
-
-  public get mail() : Message {
+  public get mail(): Message {
     if (this.postService.mail == null) { this.postService.mail = new Message(); }
     return  this.postService.mail;
   }
@@ -31,8 +26,18 @@ export class PostulationListComponent implements OnInit {
     return this.postulationService.postulations;
   }
 
+  constructor(private postulationService: PostulationService, private sanitizer: DomSanitizer, private dialog: MatDialog, private postService: PostService) { }
+
+  p = 1;
+  recherche: any;
+
+  fileUrl;
+
+  key: string;
+  reverse = false;
+
   search() {
-    if (this.recherche == "") {
+    if (this.recherche == '') {
       this.ngOnInit();
     }
     else {
@@ -48,21 +53,16 @@ export class PostulationListComponent implements OnInit {
     }
   }
 
-  key: string;
-  reverse: boolean = false;
-
   sort(key) {
     this.key = key;
     this.reverse = !this.reverse;
   }
 
-  constructor(private postulationService: PostulationService,private sanitizer: DomSanitizer,private dialog: MatDialog,private postService:PostService) { }
-
   ngOnInit(): void {
     this.postulationService.findAll();
   }
 
-  repondre(i:number) {
+  repondre(i: number) {
     this.postService.send();
 
   }
@@ -82,14 +82,14 @@ export class PostulationListComponent implements OnInit {
     this.postulationService.delete(i);
   }
 
-  openDialog(p:Postulation): void {
+  openDialog(p: Postulation): void {
     const dialogRef = this.dialog.open(PostulationMessage, {
       width: '70%',
       height: '70%',
-      data: {postulation:p },
+      data: {postulation: p },
     });
 
-    dialogRef.afterOpened().subscribe(result =>{
+    dialogRef.afterOpened().subscribe(result => {
       this.clone(p);
 
       });
@@ -99,7 +99,7 @@ export class PostulationListComponent implements OnInit {
 
 
   }
-  clone(postulation:Postulation) {
+  clone(postulation: Postulation) {
 
     console.log(postulation.affirmation);
 
@@ -108,29 +108,29 @@ export class PostulationListComponent implements OnInit {
     this.mail.to = postulation.email;
 
 
-if(postulation.affirmation == "Refusé"){
+    if (postulation.affirmation == 'Refusé'){
 
 
-this.mail.subject =" Votre postulation n'est pas Acceptée";
+this.mail.subject = 'Demande de postulation refusée';
 
-this.mail.text = "cher client  "+postulation.nom+" "+postulation.prenom+" Votre postulation n'est pas Acceptée ";
+this.mail.text = 'Cher client ' + capitalizeFirstLetter(postulation.prenom) + ' ' + capitalizeFirstLetter(postulation.nom) + ',';
 console.log(this.mail.to);
 
 
 }
-else if(postulation.affirmation == "Accepté"){
+else if (postulation.affirmation == 'Accepté'){
 
 
-  this.mail.subject =" Votre postulation est  Acceptée";
+  this.mail.subject = 'Demande de postulation acceptée';
 
-  this.mail.text = "Bonjour"+" "+ postulation.nom+" "+postulation.prenom+" Votre postulation est Acceptée ";
+  this.mail.text = 'Cher client ' + capitalizeFirstLetter(postulation.prenom) + ' ' + capitalizeFirstLetter(postulation.nom) + ',';
   console.log(this.mail.to);
 
 
   }
 else {
 
-alert("Veuillez reaffirmez le rendez-vous");
+alert('Veuillez reaffirmez le rendez-vous');
 
 
 }
@@ -146,28 +146,32 @@ alert("Veuillez reaffirmez le rendez-vous");
   templateUrl: './response.html',
 })
 export class PostulationMessage implements OnInit  {
-pstl:Postulation;
+pstl: Postulation;
   constructor(
     public dialogRef: MatDialogRef<PostulationMessage>,
-    @Inject(MAT_DIALOG_DATA) public data: any,private postservice: PostService,private postulationService:PostulationService) { }
+    @Inject(MAT_DIALOG_DATA) public data: any, private postservice: PostService, private postulationService: PostulationService) { }
 
   onNoClick(): void {
     this.dialogRef.close();
   }
 
 
-  public get mail() : Message {
+  public get mail(): Message {
     if (this.postservice.mail == null) { this.postservice.mail = new Message(); }
     return  this.postservice.mail;
   }
 
   ngOnInit(): void {
 }
-  send(p : Postulation ){
+  send(p: Postulation ){
 
     this.postservice.send();
     this.postulationService.changeReponse(p);
 
     }
 
+  }
+
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
   }

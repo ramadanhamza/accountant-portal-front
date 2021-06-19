@@ -13,9 +13,6 @@ import { Message } from 'src/app/controller/model/message.model';
 })
 export class RdvListComponent implements OnInit {
 
-  p: number = 1;
-  recherche: any;
-
   get rdvs(): Array<Rdv> {
     return this.rdvService.rdvs;
 
@@ -25,8 +22,16 @@ export class RdvListComponent implements OnInit {
     return  this.postservice.mail;
   }
 
+  constructor(private rdvService: RdvService, private dialog: MatDialog, private postservice: PostService) { }
+
+  p = 1;
+  recherche: any;
+
+  key: string;
+  reverse = false;
+
   search() {
-    if (this.recherche == "") {
+    if (this.recherche == '') {
       this.ngOnInit();
     }
     else {
@@ -39,15 +44,10 @@ export class RdvListComponent implements OnInit {
     }
   }
 
-  key: string;
-  reverse: boolean = false;
-
   sort(key) {
     this.key = key;
     this.reverse = !this.reverse;
   }
-
-  constructor(private rdvService: RdvService,private dialog: MatDialog, private postservice: PostService) { }
 
   ngOnInit(): void {
     this.rdvService.findAll();
@@ -73,18 +73,18 @@ export class RdvListComponent implements OnInit {
   }
 
 
-  openDialog(rdv:Rdv): void {
+  openDialog(rdv: Rdv): void {
     const dialogRef = this.dialog.open(ResponseMessage, {
 
       width: '70%',
-      height:'70%',
-      data:{ rdv :rdv }
+      height: '70%',
+      data: { rdv }
     });
 
 
 
 
-dialogRef.afterOpened().subscribe(result =>{
+    dialogRef.afterOpened().subscribe(result => {
 this.clone(rdv);
 
 });
@@ -94,7 +94,7 @@ this.clone(rdv);
     });
   }
 
-  clone(rdv:Rdv) {
+  clone(rdv: Rdv) {
 
     console.log(rdv.affirmation);
 
@@ -103,29 +103,29 @@ this.clone(rdv);
     this.mail.to = rdv.client.email;
 
 
-if(rdv.affirmation == "Refusé"){
+    if (rdv.affirmation == 'Refusé'){
 
 
-this.mail.subject =" Votre demande de rendez-vous n'est pas Acceptée";
+this.mail.subject = 'Demande de rendez-vous refusée';
 
-this.mail.text = "cher client  "+rdv.client.nom+" "+rdv.client.prenom+" Votre demande de rendez-vous n'est pas Acceptée ";
+this.mail.text = 'Cher client ' + capitalizeFirstLetter(rdv.client.prenom) + ' ' + capitalizeFirstLetter(rdv.client.nom) + ',';
 console.log(this.mail.to);
 
 
 }
-else if(rdv.affirmation == "Accepté"){
+else if (rdv.affirmation == 'Accepté'){
 
 
-  this.mail.subject =" Votre demande de rendez-vous est  Acceptée";
+  this.mail.subject = 'Demande de rendez-vous acceptée à ' + rdv.date;
 
-  this.mail.text = "cher client "+" "+ rdv.client.nom+" "+rdv.client.prenom+" Votre demande de rendez-vous est Acceptée ";
+  this.mail.text = 'Cher client ' + capitalizeFirstLetter(rdv.client.prenom) + ' ' + capitalizeFirstLetter(rdv.client.nom) + ',';
   console.log(this.mail.to);
 
 
   }
 else {
 
-alert("Veuillez reaffirmez le rendez-vous");
+alert('Veuillez reaffirmez le rendez-vous');
 
 
 }
@@ -139,30 +139,34 @@ alert("Veuillez reaffirmez le rendez-vous");
   templateUrl: './response.html',
 })
 export class ResponseMessage implements OnInit  {
-rdv:Rdv;
+rdv: Rdv;
   constructor(
     public dialogRef: MatDialogRef<ResponseMessage>,
-    @Inject(MAT_DIALOG_DATA) public data: any,private postservice: PostService,private rdvService:RdvService) { }
+    @Inject(MAT_DIALOG_DATA) public data: any, private postservice: PostService, private rdvService: RdvService) { }
 
   onNoClick(): void {
     this.dialogRef.close();
   }
 
 
-  public get mail() : Message {
+  public get mail(): Message {
     if (this.postservice.mail == null) { this.postservice.mail = new Message(); }
     return  this.postservice.mail;
   }
 
   ngOnInit(): void {
 }
-  send(r:Rdv){
+  send(r: Rdv){
 
     this.postservice.send();
     this.rdvService.changeReponse(r);
 
     }
 
+  }
+
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
 
