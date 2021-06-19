@@ -55,7 +55,8 @@ export class PostulationService {
      var cv =this.postulation.cvFile;
      var message =this.postulation.messageFile;
      formData.append( "cvFile", cv);
-     formData.append( "messageFile", message);
+     if(message !== null){     formData.append( "messageFile", message);
+    }
 
    formData.append( "nom", this.postulation.nom );
    formData.append( "prenom", this.postulation.prenom );
@@ -78,6 +79,7 @@ export class PostulationService {
           }
         }, error => {
           console.log(error);
+          alert('Une erreur s\'est produit');
        }
       );
     }
