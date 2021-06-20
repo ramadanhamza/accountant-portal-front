@@ -95,6 +95,9 @@ export class PostulationListComponent implements OnInit {
       });
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
+      this.mail.to=null;
+      this.mail.subject=null;
+      this.mail.text=null;
     });
 
 

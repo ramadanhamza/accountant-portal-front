@@ -91,6 +91,10 @@ this.clone(c);
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
+      this.mail.to=null;
+      this.mail.subject=null;
+      this.mail.text=null;
+
     });
   }
 
@@ -123,6 +127,7 @@ this.clone(c);
 
     onNoClick(): void {
       this.dialogRef.close();
+
     }
 
 
