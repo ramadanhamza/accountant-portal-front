@@ -14,7 +14,7 @@ export class PostService {
   private _post: Post;
   private _timeline: Array<Post>;
   private index: number;
-  // private UrlBase = 'http://localhost:8090';
+  // private urlProd = 'http://localhost:8090';
   private  urlProd='http://visionconsultingmanagement.com';
 
   private url = '/stock/post';
@@ -172,6 +172,8 @@ clone(post: Post): Post {
         (data) => {
           if (data > 0) {
             this.timeline.splice(index, 1);
+            alert('deletion successful');
+
           } else {
             alert('deletion unsuccessful');
           }
