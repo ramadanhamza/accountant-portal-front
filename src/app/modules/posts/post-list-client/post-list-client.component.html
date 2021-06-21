@@ -14,7 +14,7 @@
         <div class="row" class="title">{{t.titre}}</div>
         <div class="row" class="date"><i class="far fa-calendar-alt"></i> {{t.date | date: 'short'}}</div>
         <div class="row" class="content" [innerHTML]="t.content.slice(0,500)"></div>
-        <a class="lire-plus" [routerLink]="['/postDetail/', t.titre, t.date, t.image, t.content]">Lire Plus</a>
+        <a class="lire-plus" [routerLink]="['/postDetail/', t.code]">Lire Plus</a>
       </div>
     </div>
   </div>

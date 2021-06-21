@@ -93,7 +93,7 @@ const routes: Routes = [{
   path: 'simpleMail',
   component: SimpleMessageComponent
   }, {
-    path: 'postDetail/:titre/:date/:image/:content',
+    path: 'postDetail/:code',
   component: PostDetailComponent
 }];
 const routerOptions: ExtraOptions = {

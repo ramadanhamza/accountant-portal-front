@@ -1,8 +1,8 @@
 <body>
 <app-navbar></app-navbar>
-<h1>{{postTitre}}</h1>
-<h2 class="date">{{postDate | date: 'short'}}</h2>
-<img *ngIf="postImage != null" src="{{postImage}}">
-<p [innerHTML]="postContent"></p>
+<h1>{{post.titre}}</h1>
+<h2 class="date">{{post.date | date: 'short'}}</h2>
+<img *ngIf="post.image != null" src="{{post.image}}">
+<p [innerHTML]="post.content"></p>
 
 <app-footer></app-footer>

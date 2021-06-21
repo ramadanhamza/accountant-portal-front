@@ -21,7 +21,6 @@ export class PostListClientComponent implements OnInit {
 
 
   constructor(private postService: PostService) { }
-  // tslint:disable-next-line:typedef
 
   public get timeline(): Array<Post> {
     if (this.postService.timeline == null) {
