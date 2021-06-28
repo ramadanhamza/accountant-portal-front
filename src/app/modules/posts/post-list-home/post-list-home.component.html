@@ -1,6 +1,6 @@
 <h1>Derniers articles</h1>
 <section class="showcase">
-  <div class="container-fluid p-0">
+  <div class="container-fluid p-0" *ngIf="timeline[timeline.length-1] != null"  >
     <div class="row no-gutters">
       <div  class="img-wrapper col-lg-6 order-lg-2 text-white"><img *ngIf="timeline[timeline.length-1].image != null" src="{{timeline[timeline.length-1].image}}"></div>
       <div class="col-lg-6 order-lg-1">
@@ -10,7 +10,7 @@
         timeline[timeline.length-1].image, timeline[timeline.length-1].content]">Lire Plus</a>
       </div>
     </div>
-    <div class="row no-gutters">
+    <div class="row no-gutters" *ngIf="timeline[timeline.length-2] != null" >
       <div class="img-wrapper col-lg-6 text-white"><img  *ngIf="timeline[timeline.length-2].image != null"  src="{{timeline[timeline.length-2].image}}"></div>
       <div class="col-lg-6">
         <h2>{{timeline[timeline.length-2].titre}}</h2>
@@ -19,7 +19,7 @@
         timeline[timeline.length-2].image, timeline[timeline.length-2].content]">Lire Plus</a>
       </div>
     </div>
-    <div class="row no-gutters">
+    <div class="row no-gutters" *ngIf="timeline[timeline.length-3] != null">
       <div  class="img-wrapper col-lg-6 order-lg-2 text-white"><img *ngIf="timeline[timeline.length-3].image != null" src="{{timeline[timeline.length-3].image}}"></div>
       <div class="col-lg-6 order-lg-1">
         <h2>{{timeline[timeline.length-3].titre}}</h2>
