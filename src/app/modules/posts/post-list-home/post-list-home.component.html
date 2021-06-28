@@ -6,8 +6,7 @@
       <div class="col-lg-6 order-lg-1">
         <h2>{{timeline[timeline.length-1].titre}}</h2>
         <p [innerHTML]="timeline[timeline.length-1].content.slice(0,500)" class="lead mb-0"></p>
-        <a class="lire-plus" [routerLink]="['/postDetail/', timeline[timeline.length-1].titre, timeline[timeline.length-1].date,
-        timeline[timeline.length-1].image, timeline[timeline.length-1].content]">Lire Plus</a>
+        <a class="lire-plus" [routerLink]="['/postDetail/', timeline[timeline.length-1].code]">Lire Plus</a>
       </div>
     </div>
     <div class="row no-gutters" *ngIf="timeline[timeline.length-2] != null" >
@@ -15,8 +14,7 @@
       <div class="col-lg-6">
         <h2>{{timeline[timeline.length-2].titre}}</h2>
         <p [innerHTML]="timeline[timeline.length-2].content.slice(0,500)" class="lead mb-0"></p>
-        <a class="lire-plus" [routerLink]="['/postDetail/', timeline[timeline.length-2].titre, timeline[timeline.length-2].date,
-        timeline[timeline.length-2].image, timeline[timeline.length-2].content]">Lire Plus</a>
+        <a class="lire-plus" [routerLink]="['/postDetail/', timeline[timeline.length-2].tcode]">Lire Plus</a>
       </div>
     </div>
     <div class="row no-gutters" *ngIf="timeline[timeline.length-3] != null">
@@ -24,8 +22,7 @@
       <div class="col-lg-6 order-lg-1">
         <h2>{{timeline[timeline.length-3].titre}}</h2>
         <p [innerHTML]="timeline[timeline.length-3].content.slice(0,500)" class="lead mb-0"></p>
-        <a class="lire-plus" [routerLink]="['/postDetail/', timeline[timeline.length-3].titre, timeline[timeline.length-3].date,
-        timeline[timeline.length-3].image, timeline[timeline.length-3].content]">Lire Plus</a>
+        <a class="lire-plus" [routerLink]="['/postDetail/', timeline[timeline.length-3].code]">Lire Plus</a>
       </div>
     </div>
   </div>

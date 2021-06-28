@@ -129,14 +129,14 @@ formData.append( "titre", this.timeline[this.index].titre );
         console.log(data.length);
         for (let i = 0; i < this.timeline.length; i++) {
           if ( this.timeline[i].image != null)
-          // this.timeline[i].image = this.timeline[i].image.replace(
-          //   '/home/nyanpasu/vscodegit/accountant-portal-front/src/',
-          //   ''
-          // );
           this.timeline[i].image = this.timeline[i].image.replace(
-            '/home/visionco5/appservers/apache-tomcat-8.0.48/webapps/ROOT/WEB-INF/classes/static/',
+            '/home/nyanpasu/vscodegit/accountant-portal-front/src/',
             ''
           );
+          // this.timeline[i].image = this.timeline[i].image.replace(
+          //   '/home/visionco5/appservers/apache-tomcat-8.0.48/webapps/ROOT/WEB-INF/classes/static/',
+          //   ''
+          // );
 
 
 
@@ -190,8 +190,7 @@ clone(post: Post): Post {
     this.http
       .post(this.urlProd + '/stock/newsletter/mail', this.mail)
       .subscribe((data) => {
-        console.log(this.mail.text);
-        console.log(this.mail.subject);
+        alert('email envoyé');
       });
     this.mail = null;
   }
@@ -207,6 +206,9 @@ clone(post: Post): Post {
           }
           if (data == -2) {
             alert(' entrez un email valid');
+          }
+          if (data == 1) {
+            alert('abonné avec succès');
           }
         },
         (error) => {
